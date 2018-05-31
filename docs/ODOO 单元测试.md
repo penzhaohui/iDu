@@ -42,7 +42,6 @@ class TestCourse(TransactionCase):
 
 
 3. 执行测试用例
-
 <br/>修改运行参数为：
 <br/>-c file path> -d db name> --stop-after-init --log-level=test --test-enable -i
 <br/>
