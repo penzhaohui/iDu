@@ -2,6 +2,7 @@
 
 ##### 开发步骤
 1. 创建文件及文件夹
+```
 ├─controllers
 ├─demo
 ├─models
@@ -13,7 +14,7 @@
 │  ├─__init__.py
 │  └─test_Course.py
 └─views
-
+```
 2. 编写测试用例
 
 __init__.py
