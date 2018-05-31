@@ -1,0 +1,19 @@
+<odoo>
+    <data>        
+        <record id="object0" model="openacademy.partner">
+          <field name="instructor">true</field> 
+        </record> 
+        
+        <record id="object1" model="openacademy.partner">
+          <field name="instructor">true</field> 
+        </record> 
+        
+        <record id="object2" model="openacademy.partner">
+          <field name="instructor">true</field> 
+        </record> 
+        
+        <record id="object3" model="openacademy.partner">
+          <field name="instructor">true</field> 
+        </record> 
+    </data>
+</odoo>

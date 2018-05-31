@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record model="res.partner.category" id="teacher1">
+            <field name="name">博导</field>
+        </record>
+        <record model="res.partner.category" id="teacher2">
+            <field name="name">正教授</field>
+        </record>
+		<record model="res.partner.category" id="teacher3">
+            <field name="name">副教授</field>
+        </record>
+		<record model="res.partner.category" id="teacher4">
+            <field name="name">讲师</field>
+        </record>
+		<record model="res.partner.category" id="teacher5">
+            <field name="name">助理讲师</field>
+        </record>
+    </data>
+</odoo>

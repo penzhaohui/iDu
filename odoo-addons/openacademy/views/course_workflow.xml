@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Workflow 工作流 -->
+        <!-- https://www.odoo.com/documentation/8.0/reference/workflows.html -->
+        <!-- 设置record的model为系统自带的 “workflow” -->
+        <record model="workflow" id="course_workflow">
+            <field name="name">course_workflow</field>
+            <!-- 关联的model -->
+            <field name="osv">openacademy.course</field>
+            <!-- 是否主动被实例化 -->
+            <field name="on_create">True</field>
+        </record>
+
+        <!-- workflow.activity 用来指定要调用的model里的方法，一般用来更改state状态-->
+        <record model="workflow.activity" id="activity_one">
+            <!-- wkf_id 这个activity对应于哪个workflow,这里对应于上面声明的workflow-->
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">course.workflow.activity.one</field>
+            <!-- dummy 类型用来指定这个activity 是workflow的开始还是结束-->
+            <field name="kind">dummy</field>
+            <!-- 开始是flow_start  结束是flow_end-->
+            <field name="flow_start">True</field>
+        </record>
+
+        <record model="workflow.activity" id="activity_two">
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">course.workflow.activity.two</field>
+            <!-- function 表示要执行model中的方法-->
+            <field name="kind">function</field>
+            <!-- 对应model中的方法-->
+            <field name="action">do_start()</field>
+        </record>
+
+        <record model="workflow.activity" id="activity_three">
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">course.workflow.activity.three</field>
+            <field name="kind">function</field>
+            <field name="action">do_confirm()</field>
+        </record>
+
+        <record model="workflow.activity" id="activity_four">
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">course.workflow.activity.four</field>
+            <field name="kind">function</field>
+            <field name="action">do_complete()</field>
+        </record>
+
+        <record model="workflow.activity" id="activity_five">
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">workflow.temp.activity.five</field>
+            <field name="kind">dummy</field>
+            <field name="flow_end">True</field>
+        </record>
+
+        <record model="workflow.activity" id="activity_six">
+            <field name="wkf_id" ref="course_workflow"/>
+            <field name="name">workflow.temp.activity.six</field>
+            <field name="kind">function</field>
+            <field name="action">do_cancel()</field>
+        </record>
+
+        <!-- 相当于一个转换器，用来接受button传来的信号，调用相关的activity-->
+        <record model="workflow.transition" id="transition_one">
+            <!-- 表示上一个执行的activity，与上面声明的activity对应-->
+            <field name="act_from" ref="activity_one"/>
+            <!-- 表示上一个将要执行的activity-->
+            <field name="act_to" ref="activity_two"/>
+            <!-- 用来做一个严重，当满足条件是才能执行，可省略-->
+            <field name="condition">state == 'init'</field>
+            <!-- 接收的信号 -->
+            <field name="signal">workflow_start</field>
+        </record>
+
+        <record model="workflow.transition" id="transition_two">
+            <field name="act_from" ref="activity_two"/>
+            <field name="act_to" ref="activity_three"/>
+            <field name="condition">state == 'start'</field>
+            <field name="signal">workflow_confirm</field>
+        </record>
+
+        <record model="workflow.transition" id="transition_three">
+            <field name="act_from" ref="activity_three"/>
+            <field name="act_to" ref="activity_four"/>
+            <field name="condition">state == 'confirm'</field>
+            <field name="signal">workflow_end</field>
+        </record>
+
+        <record model="workflow.transition" id="transition_four">
+            <field name="act_from" ref="activity_two"/>
+            <field name="act_to" ref="activity_six"/>
+            <field name="condition">state == 'start'</field>
+            <field name="signal">workflow_cancel</field>
+        </record>
+
+        <record model="workflow.transition" id="transition_five">
+            <field name="act_from" ref="activity_three"/>
+            <field name="act_to" ref="activity_six"/>
+            <field name="condition">state == 'confirm'</field>
+            <field name="signal">workflow_cancel</field>
+        </record>
+	 </data>
+</odoo>

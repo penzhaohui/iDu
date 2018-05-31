@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record model="openacademy.course" id="course0">
+            <field name="name">中国文化通论</field>
+			<field name="no">GSA001/GCH001</field>
+			<field name="credit">3</field>
+			<field name="teacher">徐士进,朱筱新,李开,颜世安</field>
+            <field name="description">“中国文化通论”是澳门科技大学通识教育体系中的一门必修课程。课程内容涉及中国历史、社会、哲学、宗教、文学、艺术、科技、教育等领域的文化现象及其社会意义。
+
+本课程旨在普及中国文化领域的基础知识，帮助学生瞭解中国文化的重要成果、重大事件和杰出人物，体会中国文化的社会价值与重要作用，感悟文化的精神魅力。要求学生学会用正确的世界观与方法论分析历史文化现象，从而继承和发扬优良的历史文化传统，并且汲取精华、优化素质，努力成长爲时代需要的高质量人才。
+            </field>
+        </record>
+        <record model="openacademy.course" id="course1">
+            <field name="name">西方文化通论</field>
+			<field name="no">GSA002/GWC001</field>
+			<field name="credit">2</field>
+			<field name="teacher">赵林,顾卫民</field>
+            <field name="description">“西方文化概论”是一门基础性通识课程，本课宗旨在于通过系统讲授，帮助学生把握西方文化发展演进的基本脉络和精神实质。本课程在内容上分爲三个部分，第一部分爲希腊罗马文化，第二部分爲中世纪基督教文化，第三部分爲西方近现代文化。本课程的讲授不仅要使学生瞭解西方文化发展各历史阶段的不同特点和文化现象，更要帮助他们认识到西方文化的基本精神以及各历史阶段之间的内在联系。
+
+本课程坚持历史与逻辑相一致的基本方法，将丰富精美的图像资料与生动风趣的课堂讲解结合起来，在扩展学生知识储量的同时，提升他们的反思能力。
+			</field>
+        </record>
+        <record model="openacademy.course" id="course2">
+            <field name="name">心理学</field>
+			<field name="no">GPY001</field>
+			<field name="credit">3</field>
+			<field name="teacher">朱会明</field>
+            <field name="description">通过本课程的学习，使学员掌握心理学的基础知识和基本理论，科学地认识瞭解人的心理现象的本质及产生、发展、演变的一般规律，并运用这些知识分析、预测现实生活中的心理现象，培养和提高学员正确分析和解决实际问题的能力，提高大学生的整体心理素质，在思想上行为上达到更好的适应社会的目标。</field>
+        </record>
+		<record model="openacademy.course" id="course3">
+            <field name="name">逻辑学</field>
+			<field name="no">GLG001</field>
+			<field name="credit">3</field>
+			<field name="teacher">梁慧川</field>
+            <field name="description">求知求真的逻辑精神是科学精神和人文精神的基石，逻辑推理与批判性思维能力是现代人才必须具备的基本素质。本课程通过指导学生学习和研究普通逻辑学的基础知识和理论，帮助学生较系统地掌握逻辑学的基本原理和方法，瞭解现代逻辑学发展的新进展，并能运用逻辑学基本知识和理论去分析、解决日常思维、专业学习和工作实践中遇到的实际思维问题，形成严密、正确的思维推理模式和创造性思维的能力，能在纷杂的资讯中把握关键问题和理清解决问题的思路，培养分析理性精神和创新意识，为进一步学习专业领域的知识和从事研究奠定思维素质基础和提供必要的逻辑分析工具。</field>
+        </record>
+    </data>
+</odoo>
