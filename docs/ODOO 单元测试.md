@@ -44,8 +44,7 @@ class TestCourse(TransactionCase):
 3. 执行测试用例
 <br/>修改运行参数为：
 <br/>-c file path> -d db name> --stop-after-init --log-level=test --test-enable -i
-<br/>
-<br/>例如：-c C:\odoo\openerp-server.
+例如：-c C:\odoo\openerp-server.
 <br/>--config=..\odoo.conf -d demo  --stop-after-init --log-level=test --test-enable -i openacademy
 
 4. 分析测试结果
