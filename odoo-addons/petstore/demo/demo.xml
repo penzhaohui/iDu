@@ -1,0 +1,44 @@
+<odoo>  
+    <record id="object0" model="petstore.message_of_the_day">
+        <field name="name">Object 0</field> 
+        <field name="message">It is so very hard to be an on-your-own-take-care-of-yourself-because-there-is-no-one-else-to-do-it-for-you grown up.</field> 
+        <field name="color">0</field> 
+    </record> 
+
+    <record id="object1" model="petstore.message_of_the_day">
+        <field name="name">Object 1</field> 
+        <field name="message">A computer without COBOL and Fortran is like a piece of chocolate cake without ketchup and mustard.</field> 
+        <field name="color">0</field>
+    </record> 
+
+    <record id="object2" model="petstore.message_of_the_day">
+        <field name="name">Object 2</field> 
+        <field name="message">Life may have no meaning, or, even worse, it may have a meaning of which you disapprove.</field> 
+        <field name="color">0</field>
+    </record> 
+
+    <record id="object3" model="petstore.message_of_the_day">
+        <field name="name">Object 3</field> 
+        <field name="message">Statisticians do it with 95% confidence.</field> 
+        <field name="color">0</field>
+    </record> 
+
+    <record id="object4" model="petstore.message_of_the_day">
+        <field name="name">Object 4</field> 
+        <field name="message">Flirting is the gentle art of making a man feel pleased with himself.</field> 
+        <field name="color">0</field>
+    </record> 
+
+      <record id="object4" model="petstore.message_of_the_day">
+        <field name="name">Object 5</field> 
+        <field name="message">What do you have when you have six lawyers buried up to their necks in sand? Not enough sand.</field> 
+        <field name="color">0</field>
+    </record> 
+
+      <record id="object4" model="petstore.message_of_the_day">
+        <field name="name">Object 6</field> 
+        <field name="message">Correction does much, but encouragement does more.</field> 
+        <field name="color">0</field>
+    </record> 
+
+</odoo>
