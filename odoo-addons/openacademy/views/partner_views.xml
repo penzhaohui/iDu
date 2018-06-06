@@ -5,8 +5,19 @@
         <record model="ir.ui.view" id="partner_instructor_form_view">
             <field name="name">partner.instructor</field>
             <field name="model">res.partner</field>
+            <!-- It is required to specify the location of reference view form -->
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <field name="city" position="before">
+                    <field name="district" domain="[('city','=',city)]" placeholder="District"/>
+                </field>
+                <field name="city" position="attributes">
+                    <attribute name="domain">[('state','=',state_id)]</attribute>
+                </field>
+                <field name="state_id" position="attributes">
+                    <attribute name="domain">[('country_id','=',`)]</attribute>
+				</field>
+
                 <notebook position="inside">
                     <page string="Sessions">
                         <group>

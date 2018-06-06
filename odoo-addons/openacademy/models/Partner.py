@@ -10,3 +10,18 @@ class Partner(models.Model):
 
     session_ids = fields.Many2many('openacademy.session',
         string="Attended Sessions", readonly=True)
+
+    city = fields.Many2one('res.city', 'city')
+    district = fields.Many2one('res.district', 'district')
+
+class ResCity(models.Model):
+    _name = 'res.city'
+
+    name = fields.Char('name')
+    state = fields.Many2one('res.country.state', 'state')
+
+class ResDistrict(models.Model):
+    _name = "res.district"
+
+    name = fields.Char('name')
+    city = fields.Many2one('res.city', "city")

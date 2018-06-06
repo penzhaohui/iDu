@@ -4,6 +4,28 @@ from odoo import models, fields, api, exceptions
 class Course(models.Model):
     _name = 'openacademy.course'
     name = fields.Char(string="Title", required=True)
+    type = fields.Selection(string='Inventory of', selection='_selection_type',
+        required=True,
+        default='none',
+        help="Refere to the sample code: addons/stock/models/stock_inventory.py")
+
+    def _selection_type(self):
+        """ Get the list of filter allowed according to the options checked
+        in 'Settings\Warehouse'. """
+        res_filter = [
+            ('none', 'All products'),
+            ('category', 'One product category'),
+            ('product', 'One product only'),
+            ('partial', 'Select products manually')]
+
+        if self.user_has_groups('stock.group_tracking_owner'):
+            res_filter += [('owner', 'One owner only'), ('product_owner', 'One product for a specific owner')]
+        if self.user_has_groups('stock.group_production_lot'):
+            res_filter.append(('lot', 'One Lot/Serial Number'))
+        if self.user_has_groups('stock.group_tracking_lot'):
+            res_filter.append(('pack', 'A Pack'))
+        return res_filter
+
     no = fields.Char(string="NO", required=True)
     credit = fields.Integer(string="Credit", required=True)
     description = fields.Text()
