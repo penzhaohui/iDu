@@ -1,0 +1,85 @@
+﻿docker/10.0/Dockerfile
+https://github.com/odoo/docker/blob/b3d6d018f740ad2a816b5209300b875e2760085e/10.0/Dockerfile
+https://hub.docker.com/r/yajo/odoo/
+https://github.com/it-projects-llc/install-odoo
+https://bitbucket.org/xcgd/odoo/src
+
+
+yingliu4203/odoo8nightly
+https://hub.docker.com/r/yingliu4203/odoo8nightly/~/dockerfile/
+
+Odoo Nightly builds
+http://nightly.odoo.com/
+
+用Dockerfile构建基于odoo8.0的nightly版本docker镜像images笔记
+http://www.duuge.com/index.php/archives/110.html
+
+用dpkg命令制作deb包方法总结
+https://blog.csdn.net/ermuzhi/article/details/7817801
+
+elicocorp/odoo
+https://hub.docker.com/r/elicocorp/odoo/#run_image
+
+
+How to make odoo docker file
+1. Install git
+   $ sudo apt-get install git
+2. Download the odoo-docker project: https://github.com/Elico-Corp/odoo-docker
+   $ mkdir -p /opt/odoo-docker/
+   $ cd /opt/odoo-docker/
+   $ git clone https://github.com/Elico-Corp/odoo-docker.git -b 10.0.2.1
+   $ rm -rf odoo-docker/.git
+pip install --use-wheel --no-index --find-links=/opt/sources/wheelhouse -r /opt/odoo/sources/odoo/requirements.txt
+
+
+3. Build odoo docker image
+   $ cd /opt/odoo-docker/odoo-docker
+   $ docker build -t transtrue/odoo:10 .
+   $ mkdir -p /opt/odoo-docker/wheelhouse
+   $ pip wheel -r /opt/odoo-docker/odoo-10.0/requirements.txt 
+
+4. Run ODOO V10.0
+docker run -d -p 5432:5432 -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.5
+docker run -u root -p 8069:8069 --name odoo --link db:db transtrue/odoo:10 start
+
+
+Workaround
+$ docker copy /opt/odoo-docker/odoo-docker/sources/odoo.conf odoo:/opt/odoo/etc/odoo.conf
+$ docker ps -a
+$ docker export 1c6a18661cf6> odoo10.tar
+$ docker load -i /opt/odoo-docker/odoo10.tar
+
+docker镜像文件导入与导出，支持批量
+https://www.cnblogs.com/ksir16/p/6553851.html
+$ docker images
+$ docker save -o transtrue_odoo_10.tar transtrue/odoo 
+$ docker load -i transtrue_odoo_10.tar
+
+open /var/lib/docker/tmp/docker-import-101249243/bin/json: no such file or directory
+
+tar cvf odoo10.tar odoo10/
+cd odoo10/
+tar cvf odoo10.tar *
+
+For test, just download odoo using wget here.
+   $ yum -y install wget
+   $ yum install zip unzip  
+   $ wget https://codeload.github.com/odoo/odoo/zip/10.0 -O odoo-10.zip
+   $ unzip odoo-10.zip
+   $ rm -rf odoo-10/.git
+   $ pip wheel -r /opt/odoo-docker/odoo-10.0/requirements.txt
+   yum -y install epel-release
+   yum -y install python-pip
+   yum -y install wheel
+   pip install --upgrade pip
+   easy_install -U setuptools
+   
+   $ pip wheel -r /root/odoo-10.0/requirements.txt
+   
+   $ wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb  -O wkhtmltox.deb
+   $ wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb -O dumb-init.deb
+centOS wget的安装和使用
+https://www.cnblogs.com/liaojie970/p/5939605.html
+
+Docker框架odoo开发配置
+https://blog.csdn.net/feidman/article/details/53160770
