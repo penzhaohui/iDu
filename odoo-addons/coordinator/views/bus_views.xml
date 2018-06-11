@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="coordinator_busmain_list">
+      <field name="name">main bus list</field>
+      <field name="model">bus.main</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="summary"/>
+          <field name="description"/>
+		  <field name="recipient"/>
+        </tree>
+      </field>
+    </record>
+	
+	<record model="ir.ui.view" id="coordinator_busmain_form">
+      <field name="name">main bus form</field>
+      <field name="model">bus.main</field>
+      <field name="arch" type="xml">
+        <form>
+			<group>
+				<field name="name"/>
+				<field name="summary"/>
+				<field name="description"/>
+				<field name="recipient"/>
+				<field name="bus_template_id"/>
+			<group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="coordinator.action_window">
+      <field name="name">Coordinator</field>
+      <field name="res_model">bus.main</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- Top menu item -->
+    <menuitem name="Coordinator" id="coordinator.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Dashboard" id="coordinator.dashboard" parent="coordinator.menu_root" action="coordinator.action_window"/>
+    <menuitem name="My Bus" id="coordinator.my_own_bus" parent="coordinator.menu_root"/>
+	<!-- actions -->
+	<menuitem name="Mine" id="coordinator.my_own_bus_created_bus" parent="coordinator.my_own_bus" action="coordinator.action_window"/>
+	<menuitem name="To Me" id="coordinator.my_own_bus_assigned_bus" parent="coordinator.my_own_bus" action="coordinator.action_window"/>
+	
+	<menuitem name="Bus Template" id="coordinator.bus_template" parent="coordinator.menu_root"/>
+	<menuitem name="All" id="coordinator.bus_template_all" parent="coordinator.bus_template" action="coordinator.action_window"/>
+	<menuitem name="Mine" id="coordinator.bus_template_mine" parent="coordinator.bus_template" action="coordinator.action_window"/>
+	
+	<menuitem name="Custom Form" id="coordinator.bus_custom_form" parent="coordinator.menu_root"/>
+	<menuitem name="All" id="coordinator.bus_custom_form_all" parent="coordinator.bus_custom_form" action="coordinator.action_window"/>
+	<menuitem name="Mine" id="coordinator.bus_custom_form_mine" parent="coordinator.bus_custom_form" action="coordinator.action_window"/>
+  </data>
+</odoo>
