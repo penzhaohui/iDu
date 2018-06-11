@@ -34,5 +34,35 @@
 			<field name="teacher">梁慧川</field>
             <field name="description">求知求真的逻辑精神是科学精神和人文精神的基石，逻辑推理与批判性思维能力是现代人才必须具备的基本素质。本课程通过指导学生学习和研究普通逻辑学的基础知识和理论，帮助学生较系统地掌握逻辑学的基本原理和方法，瞭解现代逻辑学发展的新进展，并能运用逻辑学基本知识和理论去分析、解决日常思维、专业学习和工作实践中遇到的实际思维问题，形成严密、正确的思维推理模式和创造性思维的能力，能在纷杂的资讯中把握关键问题和理清解决问题的思路，培养分析理性精神和创新意识，为进一步学习专业领域的知识和从事研究奠定思维素质基础和提供必要的逻辑分析工具。</field>
         </record>
+
+        <!--<record id="course4" model="product.template">-->
+            <!--<field name="name">Course 0</field>-->
+            <!--<field name="teacher_id" ref="padilla"/>-->
+            <!--<field name="public_categ_ids" eval="[(4, ref('academy.category_courses'), False)]"/>-->
+            <!--<field name="website_published">True</field>-->
+            <!--<field name="list_price" type="float">0</field>-->
+            <!--<field name="type">service</field>-->
+        <!--</record>-->
+        <!--<record id="course5" model="product.template">-->
+            <!--<field name="name">Course 1</field>-->
+            <!--<field name="teacher_id" ref="padilla"/>-->
+            <!--<field name="public_categ_ids" eval="[(4, ref('academy.category_courses'), False)]"/>-->
+            <!--<field name="website_published">True</field>-->
+            <!--<field name="list_price" type="float">0</field>-->
+            <!--<field name="type">service</field>-->
+        <!--</record>-->
+        <!--<record id="course6" model="product.template">-->
+            <!--<field name="name">Course 2</field>-->
+            <!--<field name="teacher_id" ref="vaughn"/>-->
+            <!--<field name="public_categ_ids" eval="[(4, ref('academy.category_courses'), False)]"/>-->
+            <!--<field name="website_published">True</field>-->
+            <!--<field name="list_price" type="float">0</field>-->
+            <!--<field name="type">service</field>-->
+        <!--</record>-->
+
+        <!--<record model="product.public.category" id="category_courses">-->
+            <!--<field name="name">Courses</field>-->
+            <!--<field name="parent_id" ref="website_sale.categ_others"/>-->
+        <!--</record>-->
     </data>
 </odoo>

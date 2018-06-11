@@ -23,15 +23,16 @@
     'ico': 'static/description/icon.png',
     'application': 'true',
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'website', 'mail'],
 
     # always loaded
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/course_views.xml',
         'views/course_workflow.xml',
+        'views/course_views.xml',
         'views/session_views.xml',
+        'views/teacher_views.xml',
         'views/partner_views.xml',
         'views/region_views.xml',
         'views/templates.xml',

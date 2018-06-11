@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, exceptions
+from odoo import api, fields, models, tools, _
 
 class Course(models.Model):
     _name = 'openacademy.course'
+    _description = "Course"
+    # _inherits = {'product.template': 'product_tmpl_id'}
+    _inherit = ['mail.thread']
+    # _inherit = 'product.template'
+
     name = fields.Char(string="Title", required=True)
     type = fields.Selection(string='Inventory of', selection='_selection_type',
         required=True,
@@ -29,7 +34,7 @@ class Course(models.Model):
     no = fields.Char(string="NO", required=True)
     credit = fields.Integer(string="Credit", required=True)
     description = fields.Text()
-    teacher = fields.Char(string="Teacher", required=False)
+    teacher_id = fields.Many2one('openacademy.teacher', string="Teacher")
     responsible_id = fields.Many2one('res.users',
                                      ondelete='set null', string="Responsible", index=True)
     session_ids = fields.One2many(
@@ -98,9 +103,5 @@ class Course(models.Model):
         return True
 
 
-class Teacher(models.Model):
-    _name = 'openacademy.teacher'
 
-    firstName = fields.Char(string="First Name", required=True)
-    lastName = fields.Char(string="Last Name", required=True)
 

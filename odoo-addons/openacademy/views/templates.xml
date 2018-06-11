@@ -1,22 +1,46 @@
 <odoo>
     <data>
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+        <template id="index">
+            <title>Academy</title>
+            <!--
+            <t t-foreach="teachers" t-as="teacher">
+                <p><t t-esc="teacher"/></p>
+                <p><t t-esc="teacher.id"/> <t t-esc="teacher.name"/> (<t t-esc="teacher.firstName"/> <t t-esc="teacher.lastName"/>)</p>
             </t>
-          </dl>
+            -->
+             <t t-call="website.layout">
+                <t t-set="title">Academy</t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <t t-foreach="teachers" t-as="teacher">
+                            <p><t t-esc="teacher.id"/> <t t-esc="teacher.name"/></p>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="biography">
+            <t t-call="website.layout">
+                <t t-set="title">Academy</t>
+                <div class="oe_structure"/>
+                <div class="oe_structure">
+                    <div class="container">
+                        <p><t t-esc="person.id"/> <t t-esc="person.name"/></p>
+                        <div class="container">
+                            <h3><t t-esc="person.name"/></h3>
+                            <p>Last modified: <i t-field="person.write_date"/></p>
+                            <div><t t-esc="person.biography"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure">
+                     <div class="container">
+                        <h3 t-field="person.name"/>
+                        <div t-field="person.biography"/>
+                         <p>Last modified: <i t-field="person.write_date" t-options='{"format": "long"}'/></p>
+                    </div>
+                </div>
+            </t>
         </template>
     </data>
 </odoo>

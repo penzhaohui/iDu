@@ -1,19 +1,22 @@
 <odoo>
     <data>
-        <record model="res.partner.category" id="teacher1">
-            <field name="name">博导</field>
+        <record id="padilla" model="openacademy.teacher">
+            <field name="name">Diana Padilla</field>
+            <field name="firstName">Diana</field>
+            <field name="lastName">Padilla</field>
+            <field name="biography">Diana Padilla is good teacher!</field>
         </record>
-        <record model="res.partner.category" id="teacher2">
-            <field name="name">正教授</field>
+        <record id="carroll" model="openacademy.teacher">
+            <field name="name">Jody Carroll</field>
+            <field name="firstName">Jody</field>
+            <field name="lastName">Carroll</field>
+            <field name="biography">Jody Carroll is good teacher!</field>
         </record>
-		<record model="res.partner.category" id="teacher3">
-            <field name="name">副教授</field>
-        </record>
-		<record model="res.partner.category" id="teacher4">
-            <field name="name">讲师</field>
-        </record>
-		<record model="res.partner.category" id="teacher5">
-            <field name="name">助理讲师</field>
+        <record id="vaughn" model="openacademy.teacher">
+            <field name="name">Lester Vaughn</field>
+            <field name="firstName">Lester</field>
+            <field name="lastName">Vaughn</field>
+            <field name="biography">Lester Vaughn is good teacher!</field>
         </record>
     </data>
 </odoo>
