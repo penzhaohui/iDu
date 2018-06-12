@@ -16,8 +16,9 @@
                         <label for="firstName"/><field name="firstName"/>
                         <label for="lastName"/><field name="lastName"/>
                         <label for="biography"/><field name="biography"/>
+                        <label for="course_ids"/>
                         <field name="course_ids">
-                            <tree string="Courses" editable="bottom">
+                            <tree editable="bottom">
                                 <field name="name"/>
                             </tree>
                         </field>
