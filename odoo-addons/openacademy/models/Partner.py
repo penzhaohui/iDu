@@ -14,6 +14,10 @@ class Partner(models.Model):
     city = fields.Many2one('res.city', 'city')
     district = fields.Many2one('res.district', 'district')
 
+    def test_act(self):
+        print "Server Action is triggered!!!"
+        return True
+
 class ResCity(models.Model):
     _name = 'res.city'
 

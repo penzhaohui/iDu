@@ -133,9 +133,7 @@
             <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
         </record>
 
-        <menuitem id="session_menu" name="Sessions"
-                  parent="openacademy_menu"
-                  action="session_list_action"/>
+
 
         <record model="ir.ui.view" id="wizard_form_view">
             <field name="name">wizard.form</field>

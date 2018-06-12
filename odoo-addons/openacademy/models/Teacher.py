@@ -2,6 +2,9 @@
 from odoo import models, fields, api
 import psycopg2
 
+import logging
+_logger = logging.getLogger(__name__)
+
 class Teacher(models.Model):
     _name = 'openacademy.teacher'
 
@@ -24,3 +27,13 @@ class Teacher(models.Model):
         sql = "SELECT name,firstName,lastName FROM openacademy_teacher"
         self.env.cr.execute(sql)  # 执行SQL语句
         dicts = self.env.cr.dictfetchall()  # 获取SQL的查询结果
+
+    @api.constrains('name')
+    def action(self):
+        print "The server action will return one URL action soon!!!"
+        _logger.info("The server action will return one URL action soon!!!")
+        return {
+            "type": "ir.actions.act_url",
+            "url": "http://odoo.com",
+            "target": "self",
+        }

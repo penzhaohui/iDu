@@ -29,7 +29,7 @@ def json_response(rp):
     headers = {"Access-Control-Allow-Origin": "*"}
     return werkzeug.wrappers.Response(json.dumps(rp,ensure_ascii=False), mimetype='application/json',headers=headers)
 
-db = 'demo'
+db = 'dev'
 cr = odoo.registry(db).cursor()
 env = api.Environment(cr, SUPERUSER_ID, {})
 

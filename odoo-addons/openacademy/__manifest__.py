@@ -29,8 +29,9 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/course_workflow.xml',
+        'views/menu_views.xml',
         'views/course_views.xml',
+        'views/course_workflow.xml',
         'views/session_views.xml',
         'views/teacher_views.xml',
         'views/partner_views.xml',

@@ -26,9 +26,5 @@
 						<field name="view_id" ref="openacademy_region_view"/>
 						<field name="target">new</field>
 				</record>
-
-				<menuitem id="menu_openacademyregion_import" name="Region Import"
-						  parent="configuration_menu"
-						  action="action_openacademy_region" />
 		</data>
 </odoo>

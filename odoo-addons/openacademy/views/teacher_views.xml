@@ -27,8 +27,27 @@
             </field>
         </record>
 
-        <menuitem id="teacher_menu"
-                  parent="openacademy_menu"
-                  action="action_openacademy_teacher"/>
+        <record id="action" model="ir.actions.server">
+            <field name="name">My Action</field>
+            <field name="model_id" ref="model_openacademy_teacher"/>
+            <field name="condition">True</field>
+            <field name="code">
+            if context.get('active_model') == 'openacademy.teacher' and context.get('active_ids'):
+                action = env['openacademy.teacher'].browse(context['active_ids']).action()
+            </field>
+        </record>
+
+        <record id="action_make_testing" model="ir.actions.server">
+            <field name="name">Make Testing</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="state">code</field>
+            <field name="code">
+                log("[Server Action:Make Testing] is triggered. ");env["res.partner"].test_act();
+            </field>
+        </record>
+
+        <menuitem id='menu_testing' name='Testing' sequence="100" parent="configuration_menu" action="action_make_testing"/>
     </data>
 </odoo>
