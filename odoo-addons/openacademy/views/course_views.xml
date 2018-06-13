@@ -10,6 +10,7 @@
         <record model="ir.ui.view" id="course_form_view">
             <field name="name">course.form</field>
             <field name="model">openacademy.course</field>
+            <field name="groups_id" eval="[(4, ref('group_openacademy_manager')), (4, ref('group_openacademy_user'))]"/>
             <field name="arch" type="xml">
                 <form string="Course Form">
 					 <!-- workflow 声明-->
@@ -28,17 +29,17 @@
                     <sheet>
 						<div class="oe_title">
 							<label for="name" class="oe_edit_only" string="Course Name" />
-							<h1><field name="name" /></h1>
+                            <h1><field name="name"/></h1>
 						</div>
 						<separator string="General" colspan="2" />
 						<group colspan="2" col="2">
                             <field name="no"/>
-                            <field name="credit"/>
+                            <field name="credit"  groups="group_openacademy_manager"/>
                             <field name="type"/>
 						</group>
                         <group>
-							<field name="responsible_id"/>
-                            <field name="teacher_id"/>-
+							<field name="responsible_id" groups="group_openacademy_manager"/>
+                            <field name="teacher_id"/>
                             <!--<field name="teacher"/>-->
                         </group>
 						<notebook>

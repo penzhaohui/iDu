@@ -8,6 +8,7 @@ class Course(models.Model):
     _inherit = ['mail.thread']
     # _inherit = 'product.template'
 
+    # Only Manager role can access name?
     name = fields.Char(string="Title", required=True)
     type = fields.Selection(string='Inventory of', selection='_selection_type',
         required=True,
@@ -23,20 +24,19 @@ class Course(models.Model):
             ('product', 'One product only'),
             ('partial', 'Select products manually')]
 
-        if self.user_has_groups('stock.group_tracking_owner'):
+        if self.user_has_groups('group_openacademy_manager'):
             res_filter += [('owner', 'One owner only'), ('product_owner', 'One product for a specific owner')]
-        if self.user_has_groups('stock.group_production_lot'):
+        if self.user_has_groups('group_openacademy_user'):
             res_filter.append(('lot', 'One Lot/Serial Number'))
-        if self.user_has_groups('stock.group_tracking_lot'):
-            res_filter.append(('pack', 'A Pack'))
         return res_filter
 
     no = fields.Char(string="NO", required=True)
-    credit = fields.Integer(string="Credit", required=True)
+    # Only Manager role can access credit?
+    credit = fields.Integer(string="Credit", required=True, groups="group_openacademy_manager")
     description = fields.Text()
     teacher_id = fields.Many2one('openacademy.teacher', string="Teacher")
     responsible_id = fields.Many2one('res.users',
-                                     ondelete='set null', string="Responsible", index=True)
+                                     ondelete='set null', string="Responsible", index=True, groups="group_openacademy_manager")
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
 

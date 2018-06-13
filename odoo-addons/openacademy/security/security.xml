@@ -1,19 +1,42 @@
 <odoo>
-	<record id="group_manager" model="res.groups">
-		<field name="name">OpenAcademy / Manager</field>
-	</record>
+    <data noupdate="0">
 
-	 <record id="only_responsible_can_modify" model="ir.rule">
-            <field name="name">Only Responsible can modify Course</field>
-            <field name="model_id" ref="model_openacademy_course"/>
-            <field name="groups" eval="[(4, ref('openacademy.group_manager'))]"/>
-            <field name="perm_read" eval="0"/>
-            <field name="perm_write" eval="1"/>
-            <field name="perm_create" eval="0"/>
-            <field name="perm_unlink" eval="1"/>
-            <field name="domain_force">
-                ['|', ('responsible_id','=',False),
-                      ('responsible_id','=',user.id)]
-            </field>
+        <record model="ir.module.category" id="module_category_test">
+            <field name="name">OpenAcademy</field>
         </record>
+
+        <record model="res.groups" id="group_openacademy_user">
+            <field name="name">User</field>
+            <field name="comment">the user will have an access to the course resource.</field>
+            <field name="category_id" ref="module_category_test"/>
+            <field name="implied_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/><!-- 预设用户属于User用户组 -->
+        </record>
+
+        <record model="res.groups" id="group_openacademy_manager">
+            <field name="name">Manager</field>
+            <field name="comment">the user will have an administrator access to the course resource.</field>
+            <field name="category_id" ref="module_category_test"/>
+            <field name="implied_ids" eval="[(4, ref('group_openacademy_user'))]"/>
+        </record>
+
+        <record id="only_access_own_course_rule" model="ir.rule">
+            <field name="name">openacademy.global_course_access_rule</field>
+            <field name="model_id" ref="openacademy.model_openacademy_course"/>
+            <field name="global" eval="True"/>
+            <field name="active" eval="False"/>
+            <!--<field name="domain_force">[('responsible_id', '=', uid)]</field>-->
+        </record>
+
+        <record id="only_modify_own_course_rule" model="ir.rule">
+            <field name="name">openacademy.private_course_access_rule</field>
+            <field name="model_id" ref="openacademy.model_openacademy_course"/>
+            <field name="domain_force">['|', ('responsible_id','=',False),('responsible_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_openacademy_manager')), (4, ref('group_openacademy_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
 </odoo>

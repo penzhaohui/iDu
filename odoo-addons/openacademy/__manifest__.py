@@ -29,7 +29,6 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/menu_views.xml',
         'views/course_views.xml',
         'views/course_workflow.xml',
         'views/session_views.xml',
@@ -37,6 +36,7 @@
         'views/partner_views.xml',
         'views/region_views.xml',
         'views/templates.xml',
+        'views/menu_views.xml',
     ],
     'qweb': ['static/src/xml/tree_view_button.xml'],
     # only loaded in demonstration mode

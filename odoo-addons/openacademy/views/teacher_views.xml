@@ -47,7 +47,5 @@
                 log("[Server Action:Make Testing] is triggered. ");env["res.partner"].test_act();
             </field>
         </record>
-
-        <menuitem id='menu_testing' name='Testing' sequence="100" parent="configuration_menu" action="action_make_testing"/>
     </data>
 </odoo>
