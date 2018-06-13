@@ -6,4 +6,5 @@ iDu，也许是一个有关ODOO研究的资料库，也许是一个技术试验�
 
 #### 与ODOO相关的开源项目
 - [Ingeniería ADHOC](https://github.com/ingadhoc)
+- [xmi2odoo](https://github.com/ctmil/xmi2odoo)
 
