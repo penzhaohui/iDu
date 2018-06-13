@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--record 规则 -->
+        <record id="rule_user_bumen_qingjiadan" model="ir.rule">
+            <field name="name">普通员工只能看到自己的请假单</field>
+            <field name="model_id" ref="leaveapp.leaverequestapplication" />
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]" />
+        </record>
+        <record id="rule_user_bumen_qingjiadan_hr" model="ir.rule">
+            <field name="name">人力资源部可以看到所有请假单</field>
+            <field name="model_id" ref="leaveapp.leaverequestapplication" />
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('bumen.group_hr','bumen.group_manager'))]" />
+        </record>
+        <record id="LeaveApplicationForm" model="ir.ui.view">
+            <field name="name">leaverequestapplication_form</field>
+            <field name="model">leaveapp.leaverequestapplication</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <!--
+            <button name="send" type="object" string="发送" class="oe_highlight"/>
+            <button name="confirm" type="object" string="确认" class="oe_highlight"/>
+            -->
+                        <button name="btn_confirm" type="workflow" states="draft" string="发送" class="oe_highlight" groups="bumen.group_hr" />
+                        <button name="btn_accept" type="workflow" states="confirmed" string="批准" class="oe_highlight" groups="bumen.group_hr" />
+                        <button name="btn_reject" type="workflow" states="confirmed" string="拒绝" class="oe_highlight" groups="bumen.group_hr" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,accepted,rejected" groups="bumen.group_hr" />
+                    </header>
+                    <sheet>
+                        <group name="group_top" string="请假单">
+                            <group name="group_left">
+                                <field name="name" />
+                                <field name="manager" />
+                                <field name="current_name" />
+                            </group>
+                            <group name="group_right">
+                                <field name="startDate" />
+                                <field name="endDate" />
+                            </group>
+                        </group>
+                        <group name="group_below">
+                            <field name="reason" />
+                            <field name="accept_reason" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="LeaveApplicationSearchView" model="ir.ui.view">
+            <field name="name">leaverequestapplication_search</field>
+            <field name="model">leaveapp.leaverequestapplication</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="days" />
+                    <field name="name" />
+                    <field name="state" />
+                    <filter name="state_complete" string="审批通过" domain="[('state', '=', 'accepted')]" />
+                    <filter name="state_reject" string="人力资源部不通过" domain="[('state', '=', 'rejected')]" />
+                    <filter name="state_confirm" string="待人力资源部审批" domain="[('state', '=', 'confirmed')]" />
+                    <filter name="state_draft" string="草稿" domain="[('state', '=', 'draft')]" />
+                    <group string="Group By">
+                        <filter name="state" string="按审核进度分组" context="{'group_by': 'state'}" />
+                    </group>
+                    <filter name="state_complete_two" string="已完成" domain="[('state', '=', 'complete')]" />
+                </search>
+            </field>
+        </record>
+        <record id="LeaveApplicationTree" model="ir.ui.view">
+            <field name="name">leaverequestapplication_tree</field>
+            <field name="model">leaveapp.leaverequestapplication</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="startDate" />
+                    <field name="endDate" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="action_leaverequestapplication" model="ir.actions.act_window">
+            <field name="name">请假单</field>
+            <field name="res_model">leaveapp.leaverequestapplication</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+        <menuitem id="menu_main_LeaveRequestApplyAndApproval" name="请假" sequence="0"></menuitem>
+        <menuitem id="menu_sub_LeaveRequestApplyAndApproval" name="请假单" parent="menu_main_LeaveRequestApplyAndApproval"></menuitem>
+        <menuitem id="menu_item_LeaveRequestApplyAndApproval" parent="menu_sub_LeaveRequestApplyAndApproval" action="action_leaverequestapplication"></menuitem>
+    </data>
+</odoo>
