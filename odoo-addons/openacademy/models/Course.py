@@ -24,19 +24,23 @@ class Course(models.Model):
             ('product', 'One product only'),
             ('partial', 'Select products manually')]
 
-        if self.user_has_groups('group_openacademy_manager'):
+        if self.user_has_groups('stock.group_tracking_owner'):
             res_filter += [('owner', 'One owner only'), ('product_owner', 'One product for a specific owner')]
-        if self.user_has_groups('group_openacademy_user'):
+        if self.user_has_groups('stock.group_production_lot'):
             res_filter.append(('lot', 'One Lot/Serial Number'))
         return res_filter
 
     no = fields.Char(string="NO", required=True)
     # Only Manager role can access credit?
-    credit = fields.Integer(string="Credit", required=True, groups="group_openacademy_manager")
+    credit = fields.Integer(string="Credit", required=True, groups="openacademy.group_openacademy_manager")
+    #credit = fields.Integer(string="Credit", required=True, groups="base.user_root")
+    # credit = fields.Integer(string="Credit", required=True)
     description = fields.Text()
     teacher_id = fields.Many2one('openacademy.teacher', string="Teacher")
     responsible_id = fields.Many2one('res.users',
-                                     ondelete='set null', string="Responsible", index=True, groups="group_openacademy_manager")
+                                      ondelete='set null', string="Responsible", index=True, groups="openacademy.group_openacademy_manager")
+    # responsible_id = fields.Many2one('res.users',
+    #                                  ondelete='set null', string="Responsible", index=True)
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
 

@@ -34,11 +34,13 @@
 						<separator string="General" colspan="2" />
 						<group colspan="2" col="2">
                             <field name="no"/>
-                            <field name="credit"  groups="group_openacademy_manager"/>
+                            <field name="credit"  groups="openacademy.group_openacademy_manager"/>
+                            <!--<field name="credit"/>-->
                             <field name="type"/>
 						</group>
                         <group>
-							<field name="responsible_id" groups="group_openacademy_manager"/>
+							<field name="responsible_id" groups="openacademy.group_openacademy_manager"/>
+                            <!--<field name="responsible_id"/>-->
                             <field name="teacher_id"/>
                             <!--<field name="teacher"/>-->
                         </group>
