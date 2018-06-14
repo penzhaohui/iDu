@@ -44,6 +44,13 @@ class Course(models.Model):
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
 
+    attachments = fields.Many2many('ir.attachment', compute='_get_attachment_ids', string=u'附件')
+    def _get_attachment_ids(self):
+        att_model = self.env['ir.attachment']  # 获取附件模型
+        for obj in self:
+            query = [('res_model', '=', self._name), ('res_id', '=', obj.id)]  # 根据res_model和res_id查询附件
+            obj.attachments = att_model.search(query)  # 取得附件list
+
     @api.multi
     def copy(self, default=None):
         default = dict(default or {})

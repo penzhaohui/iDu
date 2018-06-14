@@ -46,6 +46,7 @@
                             <field name="teacher_id"/>
                             <!--<field name="teacher"/>-->
                         </group>
+                        <field name="attachments" widget="many2many_binary"/>
 						<notebook>
 							<page string="Description">
                                 <field name="description" placeholder="course description..." />
