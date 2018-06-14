@@ -16,6 +16,8 @@
 					 <!-- workflow 声明-->
                     <!-- 添加header标签用来显示workflow中的按钮-->
                     <header>
+                        <button name="invoke_xmlrpc" type="object" string="XML RPC Invoke" class="oe_highlight"/>
+                        <button name="invoke_jsonrpc" type="object" string="JSON RPC Invoke" class="oe_highlight"/>
                         <!-- 首先指明button的type为workflow类型 -->
                         <!-- name 对应于workflow.transition中的signal-->
                         <!-- states 属性用来控制button显示隐藏，例如states="init"，当state属性为init时，这个button显示，否则不显示 -->

@@ -106,6 +106,119 @@ class Course(models.Model):
         self.state = 'init'
         return True
 
+    def invoke_jsonrpc(self):
+
+        import xmlrpclib
+        import datetime
+        HOST = 'localhost'
+        PORT = 8069
+        root = 'http://%s:%d/xmlrpc/' % (HOST, PORT)
+        dbname = 'demo'
+        user = 'admin'
+        pwd = 'admin'
+
+        uid = xmlrpclib.ServerProxy(root + 'common').login(dbname, user, pwd)  # common是服务，login 是方法
+        print "Logged in as %s (uid: %d)" % (user, uid)
+
+        date = datetime.datetime.now()
+        detester = date.strftime('%Y-%m-%d %H:%M:%S')
+
+        # 调用openacademy.course对象的create方法在数据库中插入一名课程
+        sock = xmlrpclib.ServerProxy(root + 'object')
+        args = {
+            'name': '测试' + detester,
+            'no': 'C0001',
+            'credit': 10,
+            'teacher': 'Peter.Peng',
+            'lang': 'en_US'
+        }
+
+        course_id = sock.execute(dbname, uid, pwd, 'openacademy.course', 'create',args)
+
+        values = {
+            'name': '更新'
+        }
+        result1 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'write', course_id, values)
+        print(result1)
+
+        args = [('name', '=', '更新')]
+        result2 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'search', args)
+        print(result2)
+
+        # 读取字段记录
+        fields = ['name', 'no', 'credit', 'teacher']
+        data = sock.execute(dbname, uid, pwd, 'openacademy.course', 'read', course_id, fields)
+        print(data)
+
+        # 查找所有字段，无需传ID
+        data1 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'search_read')
+        print(data1)
+
+        print 'deleteID', course_id
+        result = sock.execute(dbname, uid, pwd, 'openacademy.course', 'unlink', course_id)
+        print result
+
+        return
+
+    def invoke_xmlrpc(self):
+        print("invoke rpc sample successfully!")
+
+        import xmlrpclib
+        import datetime
+        username = 'admin'  # 用户登录名
+        pwd = 'admin'  # 用户的登录密码，测试时请换成自己的密码
+        dbname = 'demo'  # 数据库帐套名，测试时请换成自己的帐套名
+
+        # 第一步，取得uid
+        sock_common = xmlrpclib.ServerProxy('http://localhost:8069/xmlrpc/common')
+        uid = sock_common.login(dbname, username, pwd)
+        print 'uid:', uid
+
+        # replace localhost with the address of the server
+        sock = xmlrpclib.ServerProxy('http://localhost:8069/xmlrpc/object')
+
+        date = datetime.datetime.now()
+        detester = date.strftime('%Y-%m-%d %H:%M:%S')
+
+        # 调用openacademy.course对象的create方法在数据库中插入一名课程
+        course = {
+            'name': '测试' + detester,
+            'no': 'C0001',
+            'credit': 10,
+            'teacher': 'Peter.Peng',
+            'lang': 'en_US'
+        }
+
+        course_id = sock.execute(dbname, uid, pwd, 'openacademy.course', 'create', course)
+
+        # 删除一条或多条记录
+        updateID = []
+        updateID.append(course_id)
+
+        values = {
+            'name': '更新'
+        }
+        result1 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'write', updateID, values)
+
+        args = [('name', '=', '更新')]
+        result2 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'search', args)
+        print(result2)
+
+        # 读取字段记录
+        fields = ['name', 'no', 'credit', 'teacher']
+        data = sock.execute(dbname, uid, pwd, 'openacademy.course', 'read', updateID, fields)
+        print(data)
+
+        # 查找所有字段，无需传ID
+        data1 = sock.execute(dbname, uid, pwd, 'openacademy.course', 'search_read')
+        print(data1)
+
+        deleteID = updateID
+        print 'deleteID', deleteID
+        result = sock.execute(dbname, uid, pwd, 'openacademy.course', 'unlink', deleteID)
+
+        return
+
 
 
 
