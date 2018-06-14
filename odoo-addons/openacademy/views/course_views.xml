@@ -37,6 +37,7 @@
 						<group colspan="2" col="2">
                             <field name="no"/>
                             <field name="credit"  groups="openacademy.group_openacademy_manager"/>
+                            <field name="color" widget="color"/>
                             <!--<field name="credit"/>-->
                             <field name="type"/>
 						</group>

@@ -31,6 +31,7 @@ class Course(models.Model):
         return res_filter
 
     no = fields.Char(string="NO", required=True)
+    color = fields.Char(string="Color", help="Choose your color")
     # Only Manager role can access credit?
     credit = fields.Integer(string="Credit", required=True, groups="openacademy.group_openacademy_manager")
     #credit = fields.Integer(string="Credit", required=True, groups="base.user_root")
