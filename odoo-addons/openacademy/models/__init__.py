@@ -5,3 +5,4 @@ from . import Teacher
 from . import Session
 from . import Region
 from . import Wizard
+from . import Widget

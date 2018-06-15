@@ -35,6 +35,7 @@
         'views/teacher_views.xml',
         'views/partner_views.xml',
         'views/region_views.xml',
+        'views/widget_views.xml',
         'views/templates.xml',
         'views/menu_views.xml',
     ],

@@ -12,6 +12,7 @@
         <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="course_list_action" groups="group_openacademy_manager,group_openacademy_user"/>
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action" groups="group_openacademy_user"/>
         <menuitem id="teacher_menu" name="Teachers" parent="openacademy_menu" action="action_openacademy_teacher" groups="group_openacademy_manager"/>
+        <menuitem id="widget_menu" name="Widget Demo" parent="openacademy_menu" action="action_widget_demo" groups="group_openacademy_manager"/>
 
         <menuitem id="configuration_menu" name="Configuration" parent="openacademy_main_menu"/>
         <menuitem id="contact_menu" name="Contacts" parent="configuration_menu" action="contact_list_action"/>
