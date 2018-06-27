@@ -138,5 +138,25 @@
                 </p>
             </field>
         </record>
+
+        <record id="upload_course_list_server_action" model="ir.actions.server">
+            <field name="name">Upload</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_openacademy_course"></field>
+            <field name="state">code</field>
+            <field name="condition">True</field>
+            <field name="code">
+            </field>
+        </record>
+
+        <record id="course_list_custom_action" model="ir.values">
+            <field name="name">Upload</field>
+            <field name="model_id" ref="model_openacademy_course"></field>
+            <field name="model">openacademy.course</field>
+            <field name="key">action</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,' + str(ref('upload_course_list_server_action'))"></field>
+            <field name="action_id" ref="upload_course_list_server_action"></field>
+        </record>
     </data>
 </odoo>
