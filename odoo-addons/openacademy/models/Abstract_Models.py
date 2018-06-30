@@ -46,7 +46,8 @@ class SchedulerDemo(models.TransientModel):
     @api.model
     def automated_action_method(self):
         active_ids = self._context.get('active_ids')
+        print 'Automated Action: automated_action_method '
         for active_id in active_ids:
-            self.env['model.name'].browse(active_id).name = 'name'
+            self.env['openacademy.course'].browse(active_id).name = 'name'
 
         return True

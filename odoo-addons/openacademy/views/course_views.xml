@@ -146,6 +146,7 @@
             <field name="state">code</field>
             <field name="condition">True</field>
             <field name="code">
+action = env["openacademy.scheduler_demo"].automated_action_method()
             </field>
         </record>
 
