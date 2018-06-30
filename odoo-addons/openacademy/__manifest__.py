@@ -38,6 +38,7 @@
         'views/widget_views.xml',
         'views/templates.xml',
         'views/menu_views.xml',
+        'views/scheduler_scheduled_actions.xml',
     ],
     'qweb': ['static/src/xml/tree_view_button.xml'],
     # only loaded in demonstration mode

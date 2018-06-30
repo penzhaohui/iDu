@@ -6,6 +6,7 @@ class Course(models.Model):
     _description = "Course"
     # _inherits = {'product.template': 'product_tmpl_id'}
     _inherit = ['mail.thread']
+    _table = 'openacademy_course_table'
     # _inherit = 'product.template'
 
     # Only Manager role can access name?

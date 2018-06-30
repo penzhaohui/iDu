@@ -7,7 +7,7 @@
               <field name="sequence">1</field>
         </menuitem>
         -->
-        <menuitem id="openacademy_main_menu" name="Open Academy"/>
+        <menuitem id="openacademy_main_menu" name="Open Academy"  web_icon="openacademy,static/description/icon.png"/>
         <menuitem id="openacademy_menu" name="Open Academy" parent="openacademy_main_menu" groups="group_openacademy_user"/>
         <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="course_list_action" groups="group_openacademy_manager,group_openacademy_user"/>
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action" groups="group_openacademy_user"/>

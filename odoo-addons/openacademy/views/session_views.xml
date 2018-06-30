@@ -134,8 +134,6 @@
             <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
         </record>
 
-
-
         <record model="ir.ui.view" id="wizard_form_view">
             <field name="name">wizard.form</field>
             <field name="model">openacademy.wizard</field>
