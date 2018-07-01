@@ -31,9 +31,45 @@
                 on_change = Based on Form Modification
                 on_time = Based on Timed Condition
             -->
-            <field name="kind">on_write</field>
+            <field name="kind">on_create_or_write</field>
             <field name="server_action_ids" eval="[(6,0,[ref('id_server_action'), ref('upload_course_list_server_action')])]"/>
         </record>
 
+        <!--Inherit quotations search view-->
+        <record id="course_search_view_new_extra_filter" model="ir.ui.view">
+            <field name="name">course.search.extra.filter</field>
+            <field name="model">openacademy.course</field>
+            <field name="inherit_id" ref="openacademy.course_search_view_new"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="name" string="按照name字段搜索" domain="[('name', '=', self)]"/>
+                    <field name="id" string="按照id字段搜索" domain="[('id', '=', self)]"/>
+                    <separator/>
+                    <filter string="当天" name="today"  domain="[('create_date','&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('create_date', '&lt;', context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="本周" name="last_week"  domain="[('create_date','&gt;', (context_today() - datetime.timedelta(weeks=1)).strftime('%%Y-%%m-%%d 00:00:00'))]"/>
+                    <filter string="本月" name="month" domain="[('create_date','&gt;=', time.strftime('%Y-%m-01 00:00:00')),('create_date','&lt;',  (context_today() + relativedelta(months=1)).strftime('%Y-%m-01 00:00:00'))]"/>
+                    <filter string="上月" name="month2"  domain="[('create_date','&lt;', time.strftime('%Y-%m-01 00:00:00')),('create_date','&gt;=',  (context_today() - relativedelta(months=1)).strftime('%Y-%m-01 00:00:00'))]"/>
+                    <filter string="本年" name="year"  domain="[('create_date','&lt;=', time.strftime('%Y-12-31 23:59:59')),('create_date','&gt;=', time.strftime('%Y-01-01 00:00:00'))]"/>
+
+                    <separator/>
+                    <filter name="过去24小时" string="Last 24h" domain="[('create_date','&gt;', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00') )]"/>
+                    <filter name="上周" string="Last Week" domain="[('create_date','&gt;', (context_today() - datetime.timedelta(weeks=1)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                    <!--另一种写法-->
+                    <separator/>
+                    <filter name="week" string="本周"
+                            domain="[
+                                '&amp;',
+                                ('create_date', '>=', (context_today() + relativedelta(weeks=-1,days=1,weekday=0)).strftime('%Y-%m-%d')),
+                                ('create_date', '&lt;=', (context_today() + relativedelta(weekday=6)).strftime('%Y-%m-%d')),
+                            ]"/>
+                    <filter name="month" string="本月"
+                            domain="[
+                                '&amp;',
+                                ('create_date', '>=', (context_today() + relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                ('create_date', '&lt;=', (context_today() + relativedelta(months=1, day=1, days=-1)).strftime('%Y-%m-%d')),
+                            ]"/>
+                </xpath>
+            </field>
+        </record>
    </data>
 </odoo>
