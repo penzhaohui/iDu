@@ -7,6 +7,14 @@
             </xpath>
         </template>
 
+        <record id="action_new_course1" model="ir.actions.act_window">
+            <field name="name">Course</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+        </record>
+
         <record model="ir.ui.view" id="course_form_view">
             <field name="name">course.form</field>
             <field name="model">openacademy.course</field>
@@ -16,8 +24,10 @@
 					 <!-- workflow 声明-->
                     <!-- 添加header标签用来显示workflow中的按钮-->
                     <header>
-                        <button name="invoke_xmlrpc" type="object" string="XML RPC Invoke" class="oe_highlight"/>
-                        <button name="invoke_jsonrpc" type="object" string="JSON RPC Invoke" class="oe_highlight"/>
+                        <button type="action" name="openacademy.action_new_course1" string="New course" confirm="Do you want to create a new course?"/>
+                        <button name="invoke_xmlrpc" type="object" string="XML RPC Invoke" class="oe_highlight" confirm="Do you want to invoke XML RPC?"/>
+                        <button name="invoke_jsonrpc" type="object" string="JSON RPC Invoke" class="oe_highlight" confirm="Do you want to invoke JSON RPC?"/>
+                        <button name="invoke_context" type="object" string="Context Invoke" class="oe_highlight" confirm="Do you want to invoke context?"  context="{'context_type': 'type'}"/>
                         <!-- 首先指明button的type为workflow类型 -->
                         <!-- name 对应于workflow.transition中的signal-->
                         <!-- states 属性用来控制button显示隐藏，例如states="init"，当state属性为init时，这个button显示，否则不显示 -->
@@ -37,9 +47,9 @@
 						<group colspan="2" col="2">
                             <field name="no"/>
                             <field name="credit"  groups="openacademy.group_openacademy_manager"/>
-                            <field name="color" widget="color"/>
+                            <field name="color" widget="color" attrs="{'invisible': False, 'required': True}"/>
                             <!--<field name="credit"/>-->
-                            <field name="type"/>
+                            <field name="type" attrs="{'invisible': [(False, '=', False)], 'required': [(True, '=', True)]}"/>
 						</group>
                         <group>
 							<field name="responsible_id" groups="openacademy.group_openacademy_manager"/>

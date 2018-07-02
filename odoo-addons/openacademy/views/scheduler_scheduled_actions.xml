@@ -42,6 +42,7 @@
             <field name="inherit_id" ref="openacademy.course_search_view_new"/>
             <field name="arch" type="xml">
                 <xpath expr="//search" position="inside">
+                    <separator/>
                     <field name="name" string="按照name字段搜索" domain="[('name', '=', self)]"/>
                     <field name="id" string="按照id字段搜索" domain="[('id', '=', self)]"/>
                     <separator/>

@@ -115,6 +115,10 @@ class Course(models.Model):
         self.state = 'init'
         return True
 
+    def invoke_context(self):
+        if self.env.context and self.env.context.get('context_type'):
+            print 'context_type:', self.env.context.get('context_type')
+
     def invoke_jsonrpc(self):
 
         import xmlrpclib
