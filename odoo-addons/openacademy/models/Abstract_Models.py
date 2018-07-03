@@ -2,6 +2,7 @@
 from odoo import api, fields, models, tools, _
 import logging
 import datetime
+import time
 
 _logger = logging.getLogger(__name__)
 
@@ -51,3 +52,25 @@ class SchedulerDemo(models.TransientModel):
             self.env['openacademy.course'].browse(active_id).name = 'name'
 
         return True
+
+    @api.model
+    def custom_funct_date(self):
+        # print "make sure that this action is called from th server action "
+        # compute you date
+        import time
+
+        tree_id = self.env.ref("openacademy.course_tree_view")
+        form_id = self.env.ref("openacademy.course_form_view")
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Courses',
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'openacademy.course',
+            # 'domain': [('date_order', '>=', my_date)],
+            # 'domain': [('create_date', '>=', time.strftime('%Y-%m-%d 00:00:00')),('create_date', '<', time.strftime('%Y-%m-%d 23:59:59'))],
+            'domain': [('create_date', '>', (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'))],
+            'views': [(tree_id.id, 'tree'), (form_id.id, 'form')],
+            'target': 'current',
+            'context': None,
+        }

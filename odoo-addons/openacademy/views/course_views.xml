@@ -54,7 +54,7 @@
                         <group>
 							<field name="responsible_id" groups="openacademy.group_openacademy_manager"/>
                             <!--<field name="responsible_id"/>-->
-                            <field name="teacher_id"/>
+                            <field name="teacher_id" domain="[('name','=','Test')]" options="{'no_create': False, 'no_quick_create':False, 'no_create_edit':False}"/>
                             <!--<field name="teacher"/>-->
                         </group>
 						<notebook>
@@ -120,8 +120,8 @@
             <field name="name">course.tree</field>
             <field name="model">openacademy.course</field>
             <field name="arch" type="xml">
-                <tree string="Course Tree">
-					<field name="name"/>
+                <tree string="Course Tree" create="true" edit="true" delete="true">
+					<field name="name" />
                     <field name="no"/>
                     <field name="credit"/>
 					<!--<field name="teacher"/>-->
@@ -143,11 +143,23 @@
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="course_search_view_new"></field>
             <field name="context" eval="{'search_default_my_courses': 1}"/>
+            <field name="domain">[('create_date','&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('create_date', '&lt;', context_today().strftime('%Y-%m-%d 23:59:59'))]</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first course
                 </p>
             </field>
         </record>
+
+        <!-- 另外一种实现方式 -->
+         <record id="course_list_server_action" model="ir.actions.server">
+             <field name="name">Courses Server Action</field>
+             <field name="model_id" ref="model_openacademy_course"/>
+             <field name="state">code</field>
+             <field name="code">
+action = env["openacademy.scheduler_demo"].custom_funct_date()
+             </field>
+             <field eval="True" name="condition"/>
+         </record>
 
         <record id="upload_course_list_server_action" model="ir.actions.server">
             <field name="name">Upload</field>

@@ -23,7 +23,7 @@
     'ico': 'static/description/icon.png',
     'application': 'true',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website', 'mail'],
+    'depends': ['base', 'website', 'mail','base_action_rule'],
 
     # always loaded
     'data': [
