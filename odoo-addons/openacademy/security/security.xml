@@ -9,7 +9,7 @@
             <field name="name">User</field>
             <field name="comment">the user will have an access to the course resource.</field>
             <field name="category_id" ref="module_category_test"/>
-            <field name="implied_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/><!-- 预设用户属于User用户组 -->
         </record>
 

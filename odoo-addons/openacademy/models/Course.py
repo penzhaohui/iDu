@@ -116,6 +116,7 @@ class Course(models.Model):
         return True
 
     def invoke_context(self):
+        print "Call --> def invoke_context(self)"
         if self.env.context and self.env.context.get('context_type'):
             print 'context_type:', self.env.context.get('context_type')
 
