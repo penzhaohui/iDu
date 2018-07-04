@@ -53,4 +53,125 @@ https://stackoverflow.com/questions/43682240/odoo-hide-field-with-attrs
 <field name="product_id" on_change="onchange_product_id(product_id, context)"
   context="{'default_hr_expense_ok':1}"/>
 
-* context上面是常用的方法，掌握后，就可以在整个系统中方便传数值，但是上下文，不要传太多         
+* context上面是常用的方法，掌握后，就可以在整个系统中方便传数值，但是上下文，不要传太多   
+
+
+Odoo - How to set domain filter from backend
+https://stackoverflow.com/questions/46716546/odoo-how-to-set-domain-filter-from-backend
+How to filter a domain view with a function? In odoo 9
+https://stackoverflow.com/questions/43733825/how-to-filter-a-domain-view-with-a-function-in-odoo-9
+How to use Domains to filter data records in Odoo
+http://www.erpish.com/odoo/how-to-use-domains-to-filter-data-records-in-odoo/ 
+
+
+若你想限制用户可访问的记录集，有三种方法：
+1，在Window Action里面加Domain
+2，使用Server Action，可以做动态Domain
+3，还有一种全局方法，是record rule
+
+ODOO 的权限判断机制：
+1，admin属于root用户，Model级别的权限判断对它无效
+2，Model级别的权限判断仅限于实体Model，对transient Model无效
+3，检查哪些User Group是否可访问该Model
+
+SELECT c.name, g.name
+FROM ir_model_access a
+     JOIN ir_model m ON (a.model_id=m.id)
+     JOIN res_groups g ON (a.group_id=g.id)
+     LEFT JOIN ir_module_category c ON (c.id=g.category_id)
+WHERE m.model='dynamic.list' AND a.active IS TRUE AND a.perm_read
+
+4，检查当前用户是否可访问该Model
+SELECT MAX(CASE WHEN perm_read THEN 1 ELSE 0 END)
+FROM ir_model_access a
+     JOIN ir_model m ON (m.id = a.model_id)
+     JOIN res_groups_users_rel gu ON (gu.gid = a.group_id)
+WHERE m.model = 'dynamic.list'
+      AND gu.uid = 5
+      AND a.active IS TRUE
+
+5，检查全局所有用户是否可访问该Model
+
+SELECT MAX(CASE WHEN perm_read THEN 1 ELSE 0 END)
+FROM ir_model_access a
+     JOIN ir_model m ON (m.id = a.model_id)
+WHERE a.group_id IS NULL
+AND m.model = 'dynamic.list'
+AND a.active IS TRUE
+
+6，获取当前用户的id
+SELECT *
+FROM "public".res_users
+
+若用户没有权限，则可通过警告消息或系统运行日志进行判断问题的根源：
+
+2018-07-03 02:51:48,542 5952 INFO idu [图片]odoo.addons.base.ir.ir_model: Access Denied by ACLs for operation: read, uid: 5, model: dynamic.list
+
+或者
+
+1）Only users with the following access level are currently allowed to do that
+
+2）Please contact your system administrator if you think this is an error.
+
+相关文件和方法：\odoo-10.0\odoo\addons\base\ir\ir_model.py
+# The context parameter is useful when the method translates error messages.
+# But as the method raises an exception in that case,  the key 'lang' might
+# not be really necessary as a cache key, unless the `ormcache_context`
+# decorator catches the exception (it does not at the moment.)
+@api.model
+@tools.ormcache_context('self._uid', 'model', 'mode', 'raise_exception', keys=('lang',))
+def check(self, model, mode='read', raise_exception=True):
+
+select * from ir_model_data
+where model = 'res.groups'
+
+SELECT g.id, g.name, g.comment, g.share, g.is_portal 
+FROM res_groups g inner join ir_model_data m on g.id = m.res_id
+WHERE m.module = 'base'
+AND m.name = 'group_user' 
+and m.model = 'res.groups'
+
+
+select * from res_groups_users_rel
+where uid = 5
+
+List 视图的分页显示
+How to change the default no of records displayed on OpenERP
+https://stackoverflow.com/questions/10664166/how-to-change-the-default-no-of-records-displayed-on-openerp
+OpenERP 7 one2many pagination
+https://stackoverflow.com/questions/18354061/openerp-7-one2many-pagination
+
+ODOO 模块权限实施建议：
+
+原理：
+1，数据级别，例如数据对象的增/删/改/查，可查询的记录集合
+2，界面级别，例如菜单/视图/字段的隐藏和显示
+3，用户组与用户组之间存在继承机制，即子用户组可完全继承父用户组的所有权限配置
+4，一个用户可关联多个用户组
+5，用户组与数据对象、菜单对象、视图对象、视图字段对象存在多对多的关联
+6，控制用户可访问的数据集合范围有三种方式：Filter、Domain和Record Rule
+
+实施建议如下：
+1，系统设计仅对标准的粗粒度配置进行初始化和代码逻辑包含
+2，第一级别：数据对象级别的增/删/改/查，系统设计可设计几类标准的用户组
+3，第二级别：菜单和视图级别，系统设计可根据通用业务设计积累标准的用户组，例如管理员、经理、普通员工
+4，第三级别：视图字段级别的控制：
+             一种是根据上下文数据值进行动态控制（推荐），实现手段是通过对attrs进行动态设置；
+			 一种是根据用户决策进行固定控制（不推荐），实现手段是通过group进行动态设置
+5，第四级别：可访问数据集合的控制，有三种实现方式：
+              一种是采用Record Rule，这样保证全局一致，但是较固定，谨慎使用
+			  一种是采用Domain,可以根据局部的上下文动态调整，容易存在数据安全漏洞
+			  一种是采用Filter，属于临时方案，属于提高用户体验之类的手段
+6，对于Server Action/Automated Action/Scheduled Action等操作，建议建立一个特别用户，用于跟踪数据的安全性
+
+Security in OpenERP : Users, groups, access rights, record rules.
+http://serpentcs.com/serpentcs-security-in-openerp-users-groups-access-rights-record-rules-230
+User roles
+https://www.odoo.com/apps/modules/10.0/base_user_role/      
+
+OAuth2 provider
+https://www.odoo.com/apps/modules/10.0/oauth_provider/
+Odoo: URL not found if not auth
+https://stackoverflow.com/questions/45466814/odoo-url-not-found-if-not-auth
+set default database for default website with multiple databases on same server instance
+https://www.odoo.com/forum/help-1/question/set-default-database-for-default-website-with-multiple-databases-on-same-server-instance-75176
