@@ -1,0 +1,56 @@
+ODOO V9 COMMUNITY VS ENTERPRISE
+https://xpansa.com/odoo/odoo-community-vs-odoo-enterprise/
+(注：比较完善的比较ODOO 社区版和企业版)
+
+Creating security groups in Odoo
+https://www.odoo.yenthevg.com/creating-security-groups-odoo/
+
+Security tutorial
+http://odoo-development.readthedocs.io/en/latest/dev/access/tutorial.html
+
+Odoo Security
+https://www.odoo.com/security
+
+Can't have dynamic domains values in attrs attribute of xml tags
+https://github.com/odoo/odoo/issues/3617
+
+Working with context and domain in odoo v9
+https://www.surekhatech.com/blog/working-with-context-and-domain-in-odoo-v9
+
+odoo V10中文参考手册（指导规范）
+https://www.jianshu.com/p/dfe15ef18769
+
+在XML Field中使用context, options, 主要解决啥问题？先提出问题在这。
+https://stackoverflow.com/questions/45117764/dynamic-domain-apply-while-other-fields-value-changed-odoo
+<field name="warehouse_id" 
+       context="{'global_procurement': parent.global_procurement}"/>
+	   
+<field name="warehouse_id" required="1" 
+       domain="[('field_name','=',parent.global_procurement)]" 
+	   options="{'no_create': True, 'no_quick_create':True, 'no_create_edit':True}" />
+
+https://stackoverflow.com/questions/43682240/odoo-hide-field-with-attrs
+<field name="time_id" 
+       attrs="{'invisible': ['|', '|', ('user_id', '=', False), ('car_id', '=', False), ('city_id', '=', False)]}"/>
+
+* 视图中引入context
+  model="ir.actions.act_window"时
+  <field name="context">{"search_default_my_export_list":1} </field>
+  代表 搜索时 my_expert_list 值为1 对于 search_default_是系统的前置标识
+
+  分组
+  <filter string="Day"name="group_day"context="{'group_by':'date_start:day'}"
+
+  指定搜索
+  <field name="department_id" string="Department" context="{'invisible_department': False}"/>
+
+
+  列表中字段
+  <field name="line_ids" context="{'currency_id': currency_id,
+   'default_analytic_account': context.get('analytic_account', '')}">
+
+视图定义context 带入函数
+<field name="product_id" on_change="onchange_product_id(product_id, context)"
+  context="{'default_hr_expense_ok':1}"/>
+
+* context上面是常用的方法，掌握后，就可以在整个系统中方便传数值，但是上下文，不要传太多         

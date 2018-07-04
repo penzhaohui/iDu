@@ -1,0 +1,207 @@
+<templates>
+	<div t-name="express_extra_buttons" class="express_extra_buttons">
+		<button t-if='widget.model=="express.order"' type="button" class="btn btn-sm btn-primary zx_express_send">批量发货</button>
+		<button t-if='widget.model=="express.order"' type="button" class="btn btn-sm btn-primary zx_express_print">批量打印</button>
+	</div>
+	
+	<t t-extend="ListView.buttons">
+		<t t-jquery="div.o_list_buttons" t-operation="append">
+			<t t-call="express_extra_buttons"/></t>
+		</t>
+	</t>
+</templates>
+
+ListView.include({
+	init: function(){
+		this._super.apply(this, arguments);
+	},
+
+	render_buttons: function() {
+		this._super.apply(this, arguments);
+
+		var self = this;
+		
+		//批量发货操作
+		if(self.model==='express.order'){
+			this.$buttons.on('click','button.zx_express_send',function () {
+				var list_ids=self.groups.get_selection().ids
+				self.do_action({
+					'type': 'ir.actions.act_window',
+					'res_model': 'send.express.order',
+					'views': [[false, 'form']],
+					'view_mode': 'form',
+					'target': 'new',
+					'context': {'default_express_order_id': list_ids}
+				});
+			});
+
+		}
+
+		//批量打印操作
+		if(self.model === 'print.order') {
+			this.$buttons.on('click', 'button.zx_express_print', function(){
+				var list_ids=self.groups.get_selection().ids
+				var model = new Model("print.order");
+				model.call("get_json_data",[list_ids]).then(function(res_data) {
+					BatchPrint(res_data)
+				});
+			});
+		}
+
+	}
+});
+
+http://gogs.transtrue.com:3000/peter.peng/wheelhouse.git
+
+Example For Server Action
+http://odoobyriyasshon.blogspot.com/2015/08/example-for-server-action.html
+
+openERP server action，最强大的功能，没有之一
+https://www.cnblogs.com/odoouse/p/4690369.html
+
+Odoo Web Service API
+https://www.cnblogs.com/odoouse/p/5882749.html
+
+Automated actions in Odoo
+https://www.surekhatech.com/blog/automated-actions-in-odoo
+
+odoo开发笔记--自定义server action页面跳转注意
+https://www.cnblogs.com/hellojesson/p/8405539.html
+
+Odoo的自动化机制Server Action详解
+http://blog.sina.com.cn/s/blog_15ee6deee0102w720.html
+
+odoo V10中文参考手册（三：Actions）
+https://www.jianshu.com/p/47fdcf274581
+
+odoo 新API装饰器中one、model、multi的区别
+https://blog.csdn.net/qq_18863573/article/details/51114893
+
+odoo api装饰器使用
+https://blog.csdn.net/wangkun__/article/details/52974346
+
+Odoo Mobile
+https://github.com/Odoo-mobile
+
+修改运行参数为：
+-c file path> -d db name> --stop-after-init --log-level=test --test-enable -i
+
+例如：-c C:\odoo\openerp-server.
+conf -d odoo --stop-after-init --log-level=test --test-enable -i foo
+
+
+# 资料收集
+- [Odoo权限机制](http://www.cnblogs.com/toby2chen/p/5177114.html)
+- [Odoo的权限](http://www.cnblogs.com/dancesir/p/6994030.html)
+
+(30)odoo中的快捷标签
+https://www.cnblogs.com/toby2chen/p/5276670.html
+
+odoo开发笔记 -- 附件上传
+https://www.cnblogs.com/hellojesson/p/8390635.html
+
+https://github.com/keerati/odoo-redis
+
+
+Odoo中三级联动的例子
+http://www.khcloud.net:4082/?thread-6.htm
+odoo二次开发小知识点
+http://blog.51cto.com/11927232/2068191
+Odoo 二次开发系列教程
+https://www.cnblogs.com/kfx2007/category/911305.html
+Odoo 中的 Controller
+http://www.cnblogs.com/kfx2007/p/4936156.html
+Odoo二次开发使用细节
+https://blog.csdn.net/dszgf5717/article/details/53259801
+
+Odoo 8.0 new API 之Environment
+https://www.cnblogs.com/kfx2007/p/3894723.html
+ODOO的重要对象ENVIRONMENT (ENV) 简析
+http://www.sunpop.cn/odoo_environment_env/
+Odoo 学习 【二】Environment 概览
+https://www.cnblogs.com/baishoujing/p/9001358.html
+
+构造Python中的常量类
+https://blog.csdn.net/my_precious/article/details/50954622
+
+How to Get Rid of The Error a Partner Cannot Follow Twice The Same Object
+https://www.cybrosys.com/blog/how-to-get-rid-of-the-error-a-partner-cannot-follow-twice-the-same-object
+
+
+
+How to hide an options from ‘More’ button?
+https://odooforbeginnersblog.wordpress.com/2017/06/11/how-to-hide-an-options-in-more-button/
+
+Add Customerlize Button in More Button List In Odoo
+https://www.cnblogs.com/kfx2007/p/4166898.html
+
+Odoo 前端开发可用的内置JS功能介绍
+http://www.oejia.net/blog/2017/12/26/odoo_frontend_js_obj.html
+
+Odoo Web前端界面详解 - 1
+https://blog.csdn.net/j_z10/article/details/79247533
+Odoo Web前端界面详解- 2
+https://blog.csdn.net/j_z10/article/details/79253314
+
+odoo开发笔记--自定义server action页面跳转注意
+http://www.cnblogs.com/hellojesson/p/8405539.html
+
+如何使用序列号
+https://www.odoo.com/documentation/user/9.0/zh_CN/inventory/management/lots_serial_numbers/serial_numbers.html
+
+ODOO SMART BUTTON(动态按钮)
+https://odoo.com.cn/posts/odoo-smart-button/
+
+ODOO中具有层级关系的数据的存储和搜索
+https://odoo.com.cn/posts/hierarchical-data-and-materialized-path-in-odoo/
+
+ODOO优化层级关系查询效率的方法
+https://odoo.com.cn/posts/odoo-hierarchy-query-optimation/
+
+ODOO 中的MIXIN类的用法
+https://odoo.com.cn/posts/mixin_class_in_odoo/
+PYTHON GIL和并发
+https://odoo.com.cn/posts/python-gil/
+
+搭建本地SENTRY服务
+https://odoo.com.cn/posts/install-local-sentry/
+ODOO WITH SENTRY
+https://odoo.com.cn/posts/odoo-with-sentry/
+高效利用Sentry追踪日志发现问题
+https://blog.csdn.net/bigsec/article/details/54091109
+Sentry 自动化异常提醒
+https://laravel-china.org/articles/4235/sentry-automation-exception-alert
+搭建自己的 sentry 服务
+https://blog.csdn.net/divide_/article/details/68062557
+高效利用Sentry追踪日志发现问题
+https://blog.csdn.net/bigsec/article/details/54091109
+
+ODOO ACTIONS
+https://odoo.com.cn/posts/odoo-actions/
+
+How to set default values with methods in Odoo 8?
+https://stackoverflow.com/questions/31583328/how-to-set-default-values-with-methods-in-odoo-8
+
+Added fields to an inherited AbstractModel are not added to inherited Model classes
+https://github.com/odoo/odoo/issues/4146
+
+Creating automated actions in Odoo
+https://www.odoo.yenthevg.com/creating-automated-actions-in-odoo/
+Creating Automated Server Actions in Odoo
+https://webkul.com/blog/creating-automated-server-actions-odoo/
+Automated actions in Odoo
+https://www.surekhatech.com/blog/automated-actions-in-odoo
+
+crm_action_rule_demo.xml 
+https://github.com/maestrano/odoo/blob/master/addons/crm/crm_action_rule_demo.xml
+[Odoo 10] How to pass more than 1 server_action_id when creating an Automated/Server Action
+https://www.odoo.com/zh_CN/forum/help-1/question/odoo-10-how-to-pass-more-than-1-server-action-id-when-creating-an-automated-server-action-121124
+
+Adding filters to existing search views
+https://www.odoo.yenthevg.com/adding-filters-existing-search-views/
+Odoo中本日、本月、上月过滤器实现方法
+https://www.cnblogs.com/kfx2007/p/6008508.html
+odoo Odoo搜索视图设置默认过滤按钮（filter button）
+http://blog.sina.com.cn/s/blog_955289220102yp5o.html
+odoo开发笔记--前端搜索视图--按照时间条件筛选
+https://www.cnblogs.com/hellojesson/p/8144474.html

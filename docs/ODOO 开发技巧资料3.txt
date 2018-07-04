@@ -1,0 +1,93 @@
+python报错UnicodeDecodeError: 'ascii' codec can't decode byte 0xe8 in position 0 解决方案
+
+https://www.cnblogs.com/pengei/p/6407077.html
+https://zhidao.baidu.com/question/2010949962071380108.html
+https://www.cnblogs.com/CasonChan/p/4669799.html
+
+Odoo 的静态资源优化方案(重点)
+http://www.oejia.net/blog/2016/12/16/odoo_static.html
+https://stackoverflow.com/questions/6260149/os-symlink-support-in-windows
+odoo调优之道
+http://www.khcloud.net:4082/?thread-131.htm
+odoo 性能调优以及负载均衡
+https://blog.csdn.net/shanzhizi/article/details/51381485
+
+Windows安装使用Openssl
+https://blog.csdn.net/kitok/article/details/72957185
+Win7下Nginx的安装与配置，win7nginx配置
+https://www.cnblogs.com/zzyrunning/p/4563332.html
+Nginx反向代理Odoo并转为https
+https://blog.csdn.net/J_z10/article/details/51959067
+nginx 反向代理 odoo， 速度提升
+http://www.cnblogs.com/alangwansui/p/3927634.html
+win64使用openssl生成ca证书
+https://blog.csdn.net/zhaotengfei36520/article/details/41962077
+keytool生成keystore、truststore、证书以及SSL单向认证在服务端tomcat和客户端的配置
+https://blog.csdn.net/shfqbluestone/article/details/21242323
+keyStore和truststore区别
+https://blog.csdn.net/chenzanlong123/article/details/11784143
+nginx基本配置与参数说明以及Nginx中的upstream轮询机制介绍
+https://blog.csdn.net/happydream_C/article/details/54943802
+openssl的x509命令简单入门
+https://blog.csdn.net/u010846177/article/details/54356897
+ginx配置文件（nginx.conf）配置详解
+https://blog.csdn.net/tjcyjd/article/details/50695922
+
+Nginx开发从入门到精通
+http://tengine.taobao.org/book/index.html
+nginx upstream的五种分配方式
+https://blog.csdn.net/u010081710/article/details/52691406
+
+postgresql双机热备、高可用方案（采用pacemaker+corosync实现）
+https://blog.csdn.net/qguanri/article/details/51151974
+POSTGRESQL高可用方案浅析
+http://www.binqsoft.com/blog/2018/03/06/postgresql%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E6%B5%85%E6%9E%90/
+PostgreSQL 金融行业高可用和容灾解决方案
+https://yq.aliyun.com/articles/297
+
+Odoo 10 开发教程
+https://www.jianshu.com/nb/9729059
+解决："UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position"错误
+https://blog.csdn.net/Haiyang_Duan/article/details/77581699
+https://blog.csdn.net/junshao90/article/details/7974030
+
+odoo10 对接钉钉部分功能
+https://github.com/gilbert-yuan/odoo_dingding
+可能是中国用户数最多的开源ERP
+https://github.com/gilbert-yuan/gooderp_addons
+
+title "Create Certificate for ODOO"
+
+echo "step 1. init the path for OpenSSL"
+set OpenSSLPath = "D:\Program Files\OpenSSL-Win64"
+set BinPath = %OpenSSLPath%\bin
+
+echo "step 2. create the private key"
+%BinPath%\openssl genrsa -out ca/ca-key.pem 1024
+
+echo "step 3. create the certificate file"
+%BinPath%\openssl req -new -out ca/ca-req.csr -key ca/ca-key.pem -config cnf/openssl.cnf
+
+echo "step 4. create one self-signed certificate"
+%BinPath%\openssl x509 -req -in ca/ca-req.csr -out ca/ca-cert.pem -signkey ca/ca-key.pem -days 3650
+
+echo "step 5. export the p12 certificate compatiable with browser"
+%BinPath%\openssl pkcs12 -export -clcerts -in ca/ca-cert.pem -inkey ca/ca-key.pem -out ca/ca.p12
+
+openssl genrsa -out server/server-key.pem 1024
+openssl req -new -out server/server-req.csr -key server/server-key.pem -config cnf/openssl.cnf
+openssl x509 -req -in server/server-req.csr -out server/server-cert.pem -signkey server/server-key.pem -CA ca/ca-cert.pem -CAkey ca/ca-key.pem -CAcreateserial -days 3650
+https://blog.csdn.net/u010846177/article/details/54356897
+openssl pkcs12 -export -clcerts -in server/server-cert.pem -inkey server/server-key.pem -out server/server.p12
+
+openssl genrsa -out client/client-key.pem 1024
+openssl req -new -out client/client-req.csr -key client/client-key.pem -config cnf/openssl.cnf
+openssl x509 -req -in client/client-req.csr -out client/client-cert.pem -signkey client/client-key.pem -CA ca/ca-cert.pem -CAkey ca/ca-key.pem -CAcreateserial -days 3650
+openssl pkcs12 -export -clcerts -in client/client-cert.pem -inkey client/client-key.pem -out client/client.p12
+openssl pkcs12 -export -clcerts -in ca/ca-cert.pem -inkey ca/ca-key.pem -out client/client.p12
+
+keytool -genkeypair -alias certificatekey -keyalg RSA -validity 365 -keystore "D:/Program Files/OpenSSL-Win64/bin/jks/truststore.jks"
+keytool -importkeystore -srckeystore "D:/Program Files/OpenSSL-Win64/bin/jks/truststore.jks" -destkeystore "D:/Program Files/OpenSSL-Win64/bin/jks/truststore.jks -deststoretype pkcs12"
+
+
+keytool -keystore "D:/Program Files/OpenSSL-Win64/bin/jks/truststore.jks" -keypass 123456 -storepass 123456 -alias ca -import -trustcacerts -file "D:/Program Files/OpenSSL-Win64/bin/ca/ca-cert.pem"
