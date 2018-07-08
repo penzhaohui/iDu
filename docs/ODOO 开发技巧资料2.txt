@@ -1,4 +1,4 @@
-ODOO V9 COMMUNITY VS ENTERPRISE
+﻿ODOO V9 COMMUNITY VS ENTERPRISE
 https://xpansa.com/odoo/odoo-community-vs-odoo-enterprise/
 (注：比较完善的比较ODOO 社区版和企业版)
 
@@ -168,6 +168,8 @@ Security in OpenERP : Users, groups, access rights, record rules.
 http://serpentcs.com/serpentcs-security-in-openerp-users-groups-access-rights-record-rules-230
 User roles
 https://www.odoo.com/apps/modules/10.0/base_user_role/      
+How to make field readonly based on group and status?
+https://stackoverflow.com/questions/18912997/how-to-make-field-readonly-based-on-group-and-status/19144004
 
 OAuth2 provider
 https://www.odoo.com/apps/modules/10.0/oauth_provider/
@@ -175,3 +177,60 @@ Odoo: URL not found if not auth
 https://stackoverflow.com/questions/45466814/odoo-url-not-found-if-not-auth
 set default database for default website with multiple databases on same server instance
 https://www.odoo.com/forum/help-1/question/set-default-database-for-default-website-with-multiple-databases-on-same-server-instance-75176
+
+对于社会综治，基于我本周的进一步研究，确定了如下思路：
+1, 引入第三方模块Base User Role
+2, 权限实现分为两部分
+    2.1 模块提供最基本的Technoque User Group，提供细粒度的用户组设置，类似于Feature ID，参考hr_security_ext
+	2.2 引入Base User Group，由实施和客户根据业务场景进行选择搭配，提供粗粒度的用户组设置，类似于Role
+3，先用社会综治的一两个模块进行实验
+
+参考资料：
+https://www.odoo.com/apps/modules/6.1/hr_security_ext/
+Additional roles and security enhancementes, as a base for more complex HR processes.
+At HR Management level, there two roles provided bu standard: HR Manager and HR Office. 
+At the rest of the organization, three roles are available: 
+* Employee: each individual. Has only has read access to own employee data. 
+* Manager Assistant: has read and write access to all employees. 
+* Employee Manager: has read and write access to all employees.
+
+https://www.odoo.com/apps/modules/10.0/base_user_role/
+This module was written to extend the standard functionality regarding users and groups management. It helps creating well-defined user roles and associating them to users.
+It can become very hard to maintain a large number of user profiles over time, juggling with many technical groups. For this purpose, this module will help you to:
+* define functional roles by aggregating low-level groups,
+* set user accounts with the predefined roles (roles are cumulative),
+* update groups of all relevant user accounts (all at once),
+* ensure that user accounts will have the groups defined in their roles (nothing more, nothing less). In other words, you can not set groups manually on a user as long as there is roles configured on it,
+* activate/deactivate roles depending on the date (useful to plan holidays, etc)
+* get a quick overview of roles and the related user accounts.
+That way you make clear the different responsabilities within a company, and are able to add and update user accounts in a scalable and reliable way.
+
+关于租户与租户之间的用户认证
+1，引入第三方模块：
+https://www.odoo.com/apps/modules/10.0/oauth_provider/
+https://www.odoo.com/apps/modules/10.0/auth_oauth/
+2，大体思路类似于区域块链的信用机制，一个租户信任另一个租户的任何用户，无须第三方认证，也无须任何一方租户提供信任凭证。
+逻辑如下：
+租户A的某一用户a 准备向租户B 提交数据，用户a只需要将自己在租户A里面的Access Token提供给租户B，然后租户B 向租户A确认。若租户A 确认该Access Token是有效的，则租户B允许用户a继续操作。
+
+该方案的优势在于：
+1，不需要第三方认证服务器
+2，不需要提供用户名和密码，即不存在管理成本
+3，只有授权的第三方用户可访问，限制安全性
+
+为了加强系统的安全性，我们在未来会进一步的集成更多的功能
+https://www.odoo.com/apps/modules/10.0/auth_oauth_multi_token/
+https://www.odoo.com/apps/modules/10.0/auth_oauth_ip/
+https://www.odoo.com/apps/modules/10.0/auth_oauth_check_client_id/
+https://www.odoo.com/apps/modules/10.0/auth_brute_force/
+https://www.odoo.com/apps/modules/10.0/password_security/
+https://www.odoo.com/apps/modules/10.0/auth_signup_verify_email/
+https://www.odoo.com/apps/modules/10.0/auth_admin_passkey/
+https://www.odoo.com/apps/modules/10.0/auth_ldap/
+https://www.odoo.com/apps/modules/10.0/multi_user_reset_password/
+https://www.odoo.com/apps/modules/10.0/change_active_user_passwd/
+https://www.odoo.com/apps/modules/10.0/auth_crypt/
+https://www.odoo.com/apps/modules/10.0/user_set_password_email_notification/
+https://www.odoo.com/apps/modules/10.0/partner_password_reset/
+https://www.odoo.com/apps/modules/10.0/partner_contact_role/
+https://www.odoo.com/apps/modules/6.1/hr_security_ext/(注：可参考其设计思路)
