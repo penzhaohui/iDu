@@ -205,3 +205,5 @@ odoo Odoo搜索视图设置默认过滤按钮（filter button）
 http://blog.sina.com.cn/s/blog_955289220102yp5o.html
 odoo开发笔记--前端搜索视图--按照时间条件筛选
 https://www.cnblogs.com/hellojesson/p/8144474.html
+Why the title is showing the record ID number when I edit a form in Odoo 8?
+https://stackoverflow.com/questions/31267175/why-the-title-is-showing-the-record-id-number-when-i-edit-a-form-in-odoo-8?lq=1
