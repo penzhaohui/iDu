@@ -34,6 +34,7 @@ https://www.odoo.com/apps/modules/10.0/base_report_to_printer_win/
 https://www.odoo.com/apps/modules/10.0/module_auto_update/
 https://github.com/bh2smith/dependency_tree
 https://github.com/btredback/show_tree_view_columns
+https://github.com/guohuadeng/app-odoo/tree/master/app_odoo_customize
 
 与邮件相关的模块
 https://www.odoo.com/apps/modules/10.0/vieterp_mailbox/

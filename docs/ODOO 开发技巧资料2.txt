@@ -55,6 +55,8 @@ https://stackoverflow.com/questions/43682240/odoo-hide-field-with-attrs
 
 * context上面是常用的方法，掌握后，就可以在整个系统中方便传数值，但是上下文，不要传太多   
 
+openerp学习笔记 context 的应用
+https://www.cnblogs.com/cnshen/p/3189816.html
 
 Odoo - How to set domain filter from backend
 https://stackoverflow.com/questions/46716546/odoo-how-to-set-domain-filter-from-backend
