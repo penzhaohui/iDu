@@ -20,6 +20,10 @@ https://www.odoo.com/apps/modules/10.0/partner_password_reset/
 https://www.odoo.com/apps/modules/10.0/partner_contact_role/
 https://www.odoo.com/apps/modules/6.1/hr_security_ext/(注：可参考其设计思路)
 
+LDAP相关的模块
+https://www.odoo.com/apps/modules/8.0/auth_cas/
+
+
 日志管理相关的模块
 https://www.odoo.com/apps/modules/10.0/sentry/
 
@@ -38,6 +42,11 @@ https://github.com/guohuadeng/app-odoo/tree/master/app_odoo_customize
 
 与邮件相关的模块
 https://www.odoo.com/apps/modules/10.0/vieterp_mailbox/
+
+与Windows相关的Python Packages
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+
 
 
 

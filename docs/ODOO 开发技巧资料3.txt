@@ -56,6 +56,17 @@ https://github.com/gilbert-yuan/odoo_dingding
 可能是中国用户数最多的开源ERP
 https://github.com/gilbert-yuan/gooderp_addons
 
+Python dictionary from an object's fields 
+https://stackoverflow.com/questions/61517/python-dictionary-from-an-objects-fields
+Python 小提示: Python中的`__repr__`和`__str__`
+https://odoo.net.cn/topic/4904/python-%E5%B0%8F%E6%8F%90%E7%A4%BA-python%E4%B8%AD%E7%9A%84-__repr__-%E5%92%8C-__str__
+What is the use of __init__() and init() in odoo ?When We can use them ?
+https://www.odoo.com/forum/help-1/question/what-is-the-use-of-init-and-init-in-odoo-when-we-can-use-them-103996
+python中@classmethod @staticmethod区别
+https://www.cnblogs.com/dancesir/p/7326321.html
+ODOO 开发学习系列资料
+http://odoo-development.readthedocs.io/en/latest/first-steps.html
+
 title "Create Certificate for ODOO"
 
 echo "step 1. init the path for OpenSSL"
@@ -91,3 +102,4 @@ keytool -importkeystore -srckeystore "D:/Program Files/OpenSSL-Win64/bin/jks/tru
 
 
 keytool -keystore "D:/Program Files/OpenSSL-Win64/bin/jks/truststore.jks" -keypass 123456 -storepass 123456 -alias ca -import -trustcacerts -file "D:/Program Files/OpenSSL-Win64/bin/ca/ca-cert.pem"
+

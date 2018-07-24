@@ -1,0 +1,15 @@
+WebRTC 相关的资料
+
+Face recognition with webrtc, websockets and opencv
+（用WebRTC，WebSocket和OpenCV实现面部识别）
+https://github.com/ragulin/face-recognition-server
+
+Py-webrtc - A Python Wrapper to WebRTC project
+https://www.findbestopensource.com/product/py-webrtc
+https://pypi.org/project/webrtcvad/
+
+python的webrtc库实现语音端点检测
+https://blog.csdn.net/u012123989/article/details/72771667
+
+webrtc without a browser
+https://stackoverflow.com/questions/27569445/webrtc-without-a-browser
