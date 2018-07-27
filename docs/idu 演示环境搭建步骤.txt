@@ -148,6 +148,27 @@ docker cp /mnt/iDu/extra-addons/idu_cm_social_organization idu:/mnt/addons/idu
 docker cp /mnt/iDu/extra-addons/idu_cm_social_security idu:/mnt/addons/idu
 docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/addons/idu
 
+docker cp /mnt/iDu/3rd-addons/auth_oauth_check_client_id idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/auth_oauth_ip idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/base_user_role idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/oauth_provider idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/odoorpc idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/vieterp_mailbox idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/web_notify idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/web_mobile idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/backend_theme_v10 idu:/mnt/idu
+docker cp /mnt/iDu/3rd-addons/web_responsive idu:/mnt/idu
+
+docker cp /mnt/iDu/extra-addons/idu_cm_asset idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_config idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_core idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_organization idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_people idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_school_security idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_conflict idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_organization idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_security idu:/mnt/idu
+docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/idu
 
 rm -rf idu_cm_asset
 rm -rf idu_cm_config
@@ -172,11 +193,14 @@ rm -rf idu_cm_config
 chown -R odoo:odoo /mnt/addons
 chmod -R 777 *
 
+chown -R odoo:odoo /mnt/addons
+
 chown -R odoo:odoo /mnt/data-dir
 chmod -R 777 *
+chown -R odoo:odoo /mnt/data-dir
 
 docker cp idu:/mnt/config/odoo-server.conf /mnt/odoo-server.conf
-docker cp /mnt/odoo-server.conf  idu:/mnt/iDu-source
+docker cp /mnt/odoo-server.conf  idu:/mnt/config/odoo-server.conf
 
 docker cp /mnt/iDu/odoo-10.0/odoo/modules/module.py  idu:/mnt/odoo-source/odoo/modules
 docker cp /mnt/iDu/extra-addons/idu_cm_core/demo/demo.xml idu:/mnt/addons/idu/idu_cm_core/demo/
@@ -198,6 +222,7 @@ $ rm -rf /mnt/odoo-source
 $ cp -r /mnt/iDu-source/odoo-10.0/ /mnt/odoo-source
 $ chown -R root /mnt/odoo-source/
 
+cp -r /mnt/idu-source/odoo-10.0/ /mnt/odoo-source
 
 chmod -R 777 *
 chown -R odoo:odoo /mnt/iDu-source
