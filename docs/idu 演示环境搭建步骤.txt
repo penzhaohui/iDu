@@ -1,0 +1,213 @@
+搭建idu 演示环境
+
+uclistart
+(内) 10.42.116.188  
+(外) 120.132.92.204 Bgp 
+usr:root
+pwd:Transture2018
+
+1，删除所有docker container
+https://blog.csdn.net/jeikerxiao/article/details/78476925
+docker stop $(docker ps -q) & docker rm $(docker ps -aq)
+
+2，安装Docker Container Management Tool
+docker run -d -p 9000:9000 \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --name prtainer \
+docker.io/portainer/portainer
+
+安装完毕之后，可以登录站点进行 配置
+URL: http://120.132.92.204:9000/
+U/P: peter.peng/peter.peng
+
+3，在服务器1上搭建idu SaaS平台
+3.1 创建虚拟网络
+docker network create idu-saas-network
+
+3.2 创建数据库idu-db，允许外部访问。
+docker run \
+-d \
+-p 5432:5432 \
+-e POSTGRES_USER=odoo \
+-e POSTGRES_PASSWORD=odoo \
+--network=idu-saas-network \
+--name idu-db  \
+postgres:9.5
+注意：该数据库关键网络odoo-saas
+
+3.3 创建idu 实例。
+docker run \
+-d \
+-p 8069:8069 \
+--name idu \
+--network=idu-saas-network \
+-e ODOO_MASTER_PASS=admin \
+-e DB_PORT_5432_TCP_ADDR=idu-db \
+-t itprojectsllc/install-odoo:10.0
+
+注：将来此处需要做集群
+
+检查点：确保站点已经启动且可访问 http://120.132.92.204:8069/web/database/selector
+
+3.4 替换odoo-server.conf 中的dbfilter行，支持域名访问
+docker exec \
+ -u root \
+ -t idu \
+sed -i 's/dbfilter.*/dbfilter = ^%d$/' /mnt/config/odoo-server.conf
+
+docker restart idu
+
+3.5 安装nginx
+echo "192.168.0.3   portal.idu.com"   >> /etc/hosts
+# docker build -t idu/docker-odoo-nginx .
+$ cd /mnt/docker-odoo-saas
+$ docker build -t idu/docker-odoo-saas .
+
+docker run  \
+-d \
+-p 80:80 \
+--name idu-nginx \
+--network=idu-saas-network \
+-t idu/docker-odoo-nginx
+
+3.6 开始安装SaaS 平台的Portal和Server端
+
+INIT_SAAS_TOOLS_VALUE=' \
+--portal-create \
+--server-create \
+--plan-create \
+--odoo-script=/mnt/odoo-source/odoo-bin \
+--odoo-config=/mnt/config/odoo-server.conf \
+--portal-db-name=portal \
+--server-db-name=server-1 \
+--server-hosts-template={dbname}.{base_saas_domain_1} \
+--plan-template-db-name=template-1 \
+--plan-clients=demo-%i \
+'
+
+docker exec -u root -t idu /bin/bash -c "export INIT_SAAS_TOOLS='$INIT_SAAS_TOOLS_VALUE'; bash /install-odoo-saas.sh"
+
+3.7 初始化Domain
+INIT_SAAS_TOOLS_VALUE=' \
+--print-local-hosts \
+--odoo-script=/mnt/odoo-source/odoo-bin \
+--odoo-config=/mnt/config/odoo-server.conf \
+--suffix=idu.com \
+--portal-db-name=portal.{suffix} \
+--server-db-name=server-1.{suffix} \
+--plan-template-db-name=template-1.{suffix} \
+' 
+
+sudo bash -c "docker exec -u odoo -t idu bash -c \"python /mnt/addons/it-projects-llc/odoo-saas-tools/saas.py ${INIT_SAAS_TOOLS_VALUE}\" >> /etc/hosts"
+cat /etc/hosts
+
+4 在本地host文件中加入如下几行DNS映射
+120.132.92.204	portal.idu.com
+120.132.92.204	server-1.idu.com
+120.132.92.204	template-1.idu.com
+
+5 下载idu的代码
+
+在idu container中运行
+$ cp -r /mnt/odoo-source /mnt/backups
+$ mkdir -p iDu-source
+# rm -rf iDu-source
+http://man.linuxde.net/cp
+
+$ yum install git
+$ git --version
+$ git clone https://penzhaohui:change_2020@github.com/listart/iDu.git
+$ git fetch origin master
+$ git pull origin master
+$ docker cp /mnt/iDu/odoo-10.0/ idu:/mnt/iDu-source
+
+cd /mnt/iDu-source
+rm -rf odoo-10.0
+[宿主机]
+docker cp /mnt/iDu/odoo-10.0/ idu:/mnt/iDu-source
+docker cp /mnt/iDu/3rd-addons/auth_oauth_check_client_id idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/auth_oauth_ip idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/base_user_role idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/oauth_provider idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/odoorpc idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/vieterp_mailbox idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/web_notify idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/web_mobile idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/backend_theme_v10 idu:/mnt/addons/idu
+docker cp /mnt/iDu/3rd-addons/web_responsive idu:/mnt/addons/idu
+
+docker cp /mnt/iDu/extra-addons/idu_cm_asset idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_config idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_core idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_organization idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_people idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_school_security idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_conflict idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_organization idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/idu_cm_social_security idu:/mnt/addons/idu
+docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/addons/idu
+
+
+rm -rf idu_cm_asset
+rm -rf idu_cm_config
+rm -rf idu_cm_core
+rm -rf idu_cm_organization
+rm -rf idu_cm_people
+rm -rf idu_cm_school_security
+rm -rf idu_cm_social_conflict
+rm -rf idu_cm_social_organization
+rm -rf idu_cm_social_security
+
+docker cp /mnt/iDu/odoo-10.0/addons/web/views/webclient_templates.xml idu:/mnt/iDu-source/odoo-10.0/addons/web/views/
+
+docker cp /mnt/iDu/odoo-10.0/addons/mail/static/src/js/chatter.js idu:/mnt/iDu-source/odoo-10.0/addons/mail/static/src/js/
+
+cat /mnt/iDu-source/odoo-10.0/addons/web/views/webclient_templates.xml
+cp -r /mnt/iDu-source/odoo-10.0/addons/mail/static/src/js/chatter.js /mnt/odoo-source/addons/mail/static/src/js/
+
+cd /mnt/addons/idu
+rm -rf idu_cm_config
+
+chown -R odoo:odoo /mnt/addons
+chmod -R 777 *
+
+chown -R odoo:odoo /mnt/data-dir
+chmod -R 777 *
+
+docker cp idu:/mnt/config/odoo-server.conf /mnt/odoo-server.conf
+docker cp /mnt/odoo-server.conf  idu:/mnt/iDu-source
+
+docker cp /mnt/iDu/odoo-10.0/odoo/modules/module.py  idu:/mnt/odoo-source/odoo/modules
+docker cp /mnt/iDu/extra-addons/idu_cm_core/demo/demo.xml idu:/mnt/addons/idu/idu_cm_core/demo/
+
+在容器中运行
+cd /mnt/config
+chown -R odoo:odoo /mnt/odoo-source/odoo/modules
+cp -r /mnt/iDu-source/odoo-server.conf /mnt/config
+chmod -R 777 *
+cat /mnt/config/odoo-server.conf
+
+cd /mnt/addons
+mkdir -p idu
+chown -R odoo:odoo /mnt/addons
+chmod -R 777 *
+
+在idu container中运行
+$ rm -rf /mnt/odoo-source
+$ cp -r /mnt/iDu-source/odoo-10.0/ /mnt/odoo-source
+$ chown -R root /mnt/odoo-source/
+
+
+chmod -R 777 *
+chown -R odoo:odoo /mnt/iDu-source
+chown -R odoo:odoo /mnt/backups
+chown -R odoo:odoo /mnt/odoo-source
+
+
+docker exec -u root -t idu /bin/bash -c "chown -R root /mnt/odoo-source/"
+
+
+
+
+
