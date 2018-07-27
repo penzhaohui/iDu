@@ -40,6 +40,7 @@ class Widget(models.Model):
     body_html = fields.Html('Body HTML', translate=True, sanitize=False)
     subtotal = fields.Boolean('Add subtotal', default=True)
     reference = fields.Char(string='Reference', compute='_compute_reference', readonly=True, store=False)
+    gender = fields.Selection([('1', 'male'), ('0', 'female')], default='male')
 
     def _compute_reference(self):
         for res in self:

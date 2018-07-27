@@ -14,6 +14,7 @@ class Teacher(models.Model):
     biography = fields.Html()
     # course_ids = fields.One2many('openacademy.course', 'teacher_id', string="Courses")
     course_ids = fields.One2many('openacademy.course', 'teacher_id', string="Courses")
+    active = fields.Boolean(default=True)
 
     @api.multi
     def getAllTeacher1(self):

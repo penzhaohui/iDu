@@ -24,7 +24,7 @@
 					 <!-- workflow 声明-->
                     <!-- 添加header标签用来显示workflow中的按钮-->
                     <header>
-                        <button type="action" name="openacademy.action_new_course1" string="New course" confirm="Do you want to create a new course?" groups="openacademy.group_openacademy_manager"/>
+                        <button name="openacademy.action_new_course1" type="action" string="New course" confirm="Do you want to create a new course?" groups="openacademy.group_openacademy_manager"/>
                         <button name="invoke_xmlrpc" type="object" string="XML RPC Invoke" class="oe_highlight" confirm="Do you want to invoke XML RPC?" groups="openacademy.group_openacademy_manager"/>
                         <button name="invoke_jsonrpc" type="object" string="JSON RPC Invoke" class="oe_highlight" confirm="Do you want to invoke JSON RPC?" groups="openacademy.group_openacademy_manager"/>
                         <button name="invoke_context" type="object" string="Context Invoke" class="oe_highlight" confirm="Do you want to invoke context?"  context="{'context_type': 'type'}"/>
