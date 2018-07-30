@@ -54,6 +54,8 @@ https://github.com/OCA/queue/tree/11.0/base_import_async
 https://github.com/OCA/connector/tree/11.0/connector
 https://github.com/DECSIS/odoo_sync_ldap
 
+ODOO Docker相关的模块
+https://github.com/Tecnativa/docker-odoo-base
 
 
 
