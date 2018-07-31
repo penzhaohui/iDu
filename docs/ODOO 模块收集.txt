@@ -57,6 +57,13 @@ https://github.com/DECSIS/odoo_sync_ldap
 ODOO Docker相关的模块
 https://github.com/Tecnativa/docker-odoo-base
 
+文档存储相关的模块
+https://github.com/muk-it
+
+定制表单相关的模块
+https://github.com/OCA/survey
+
+
 
 
 
