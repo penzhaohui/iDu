@@ -66,6 +66,7 @@ https://github.com/OCA/survey
 ODOO 与微信集成相关的模块
 https://github.com/a741424975game/wechat_mall
 https://github.com/jachinlin/odoo_werobot
+https://github.com/chanvi/odoo_wechat_corp
 
 
 
