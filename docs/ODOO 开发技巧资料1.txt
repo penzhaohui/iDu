@@ -176,6 +176,22 @@ https://blog.csdn.net/divide_/article/details/68062557
 高效利用Sentry追踪日志发现问题
 https://blog.csdn.net/bigsec/article/details/54091109
 
+使用docker配置sentry
+http://blog.0x01.site/2016/08/10/%E4%BD%BF%E7%94%A8docker%E9%85%8D%E7%BD%AEsentry/
+Docker 搭建一个 Sentry
+https://laravel-china.org/articles/4300/sentry-build-a-docker
+Self-hosting Sentry With Docker and Docker-compose
+https://mikedombrowski.com/2018/03/self-hosting-sentry-with-docker-and-docker-compose/
+创业公司简单粗暴之路：高效利用Sentry追踪日志发现问题
+http://bigsec.com/bigsec-news/wechat-20161220-Sentry
+Sentry 入门
+https://blog.windrunner.me/tool/sentry.html
+Sentry的安装搭建与使用
+https://www.cnblogs.com/scharfsinnig/p/7467958.html
+使用 SENTRY 监控业务日志
+https://tech.liuchao.me/2015/06/monitor-service-error-logs-by-using-sentry/
+Centos7通过Docker安装Sentry(哨兵)
+https://www.cnblogs.com/CallMeUncle/p/6843513.html
 ODOO ACTIONS
 https://odoo.com.cn/posts/odoo-actions/
 
