@@ -1,0 +1,25 @@
+长连接、短连接、长轮询和WebSocket
+http://caibaojian.com/http-connection-and-websocket.html
+Python后端架构演进
+https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/
+docker-compose教程（安装，使用, 快速入门）
+https://blog.csdn.net/pushiqiang/article/details/78682323
+在docker中运行kong和kong dashboard
+https://www.cnblogs.com/ikodota/p/run_kong_and_kong_dashboard_in_docker.html
+微服务之API网关：kong：辅助UI之kong-dashboard
+https://blog.csdn.net/liumiaocn/article/details/80474865
+https://gist.github.com/toast38coza/b201813c7859b6912115f8cfdda39a70
+https://stackoverflow.com/questions/45037973/docker-compose-unable-to-make-cross-container-requests
+
+Python Tornado 介绍
+https://www.w3cschool.cn/python_tornado/
+Tornado Web 服务器
+http://tornado-zh-cn.readthedocs.io/zh_CN/latest/index.html
+
+https://github.com/strongloop/microgateway
+https://github.com/Vizzuality/api-gateway
+https://github.com/zhu327/tormq
+(注：Nginx Push Module由于长时间没有维护, 长连接最大数量不够, 使用Tornado + ZeroMQ实现了tormq服务来支撑消息通知)
+https://github.com/restran/fomalhaut
+https://github.com/Kong/kong
+
