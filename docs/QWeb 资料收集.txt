@@ -1,0 +1,36 @@
+﻿【odoo 10.0】widget开发及Qweb基本使用
+https://www.jianshu.com/p/695984c4aad2
+【odoo 10.0】使用baiduMap
+https://github.com/btredback/baidu_map
+https://www.jianshu.com/p/362006bcfc83
+(21)odoo中的QWeb模板引擎
+https://www.cnblogs.com/toby2chen/p/5198201.html
+Odoo 自定义Widgets 基础教程（章节1）
+https://yq.aliyun.com/articles/609689?spm=a2c4e.11153940.blogcont610338.18.7d5736d6f3Ht7E
+Odoo 自定义Widgets 基础教程（章节2） - 时间挂件
+https://yq.aliyun.com/articles/610338
+Odoo自定义Widgets （三）
+https://yq.aliyun.com/articles/615597?spm=a2c4e.11153940.blogcont610338.19.4e6d36d6IVaQbn
+odoo V10中文参考手册（十 ： 有用的类和混入-mixin）
+https://www.jianshu.com/p/84c6518d7dbf
+odoo V10中文参考手册（七：QWeb引擎）
+https://www.jianshu.com/p/c60bcb5ecb12
+
+随笔分类 - ODOO10
+http://www.cnblogs.com/qjtjh/category/1146375.html
+
+ODOO widget开发
+https://blog.csdn.net/openskyfly/article/category/5778517
+
+https://github.com/sjo-odoo/sjo_training
+https://github.com/sjo-odoo/sjo_petstore
+https://github.com/btredback/show_tree_view_columns
+https://github.com/JZ10UJS/extra-addons
+
+odoo V10中文参考手册
+https://www.jianshu.com/p/64f45415b2e8
+Odoo(OpenERP)开发规范(持续完善中)
+https://www.cnblogs.com/wadewang/articles/5655960.html
+
+odoo的架构
+http://blog.sina.com.cn/s/blog_955289220102y7vg.html
