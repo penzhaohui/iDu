@@ -23,3 +23,33 @@ https://github.com/zhu327/tormq
 https://github.com/restran/fomalhaut
 https://github.com/Kong/kong
 
+深入浅出Node.js游戏服务器开发--分布式聊天服务器搭建
+http://www.infoq.com/cn/articles/game-server-development-2
+NetEase/chatofpomelo
+https://github.com/NetEase/chatofpomelo
+shelmesky/async_chatroom
+https://github.com/shelmesky/async_chatroom
+nellessen/Tornado-Redis-Chat
+https://github.com/nellessen/Tornado-Redis-Chat
+游戏服务端架构 介绍
+https://www.cnblogs.com/idreamsky/p/7081207.html
+python实现微信接口(itchat)详细介绍
+https://edu.aliyun.com/a/2162
+Tornado入门教程
+http://shouce.jb51.net/tornado/index.html
+web聊天类数据库功能表结构如何设计? 
+https://blog.csdn.net/u010098331/article/details/51493016/
+五大存储模型关系模型、键值存储、文档存储、列式存储、图形数据库
+https://blog.csdn.net/u013063153/article/details/54313048
+
+手机验证短信设计与代码实现
+https://my.oschina.net/wanglihui/blog/321101
+如何设计短信验证码防刷机制
+https://www.jianshu.com/p/6accd6a955d6
+
+
+Odoo domain写法及运用
+https://segmentfault.com/a/1190000014758701
+odoo二次开发小知识点
+http://blog.51cto.com/11927232/2068191
+
