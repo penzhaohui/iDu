@@ -223,3 +223,42 @@ odoo开发笔记--前端搜索视图--按照时间条件筛选
 https://www.cnblogs.com/hellojesson/p/8144474.html
 Why the title is showing the record ID number when I edit a form in Odoo 8?
 https://stackoverflow.com/questions/31267175/why-the-title-is-showing-the-record-id-number-when-i-edit-a-form-in-odoo-8?lq=1
+
+
+RPC 相关的资料
+=======================
+一个简单RPC框架是如何炼成的(I)——开局篇
+https://blog.csdn.net/crylearner/article/details/46899083
+一个简单RPC框架是如何炼成的(II)——制定RPC消息
+https://blog.csdn.net/crylearner/article/details/46899083
+一个简单RPC框架是如何炼成的(III)——实现带参数的RPC调用
+https://blog.csdn.net/crylearner/article/details/46899687
+一个简单RPC框架是如何炼成的(IV)——实现RPC消息的编解码
+https://blog.csdn.net/crylearner/article/details/46900203
+一个简单RPC框架是如何炼成的(V)——引入传输层
+https://blog.csdn.net/crylearner/article/details/46952765
+一个简单RPC框架是如何炼成的(VI)——引入服务注册机制
+https://blog.csdn.net/crylearner/article/details/46952977
+python 简单RPC示例
+https://www.jianshu.com/p/40af791a7b1e
+轻量级分布式 RPC 框架
+http://www.importnew.com/20327.html
+
+python使用SimpleXMLRPCServer实现简单的rpc
+https://blog.csdn.net/comprel/article/details/72633482
+用Python实现一个XML-RPC服务器
+https://www.jianshu.com/p/75526458e936
+python并发编程之多进程、多线程、异步和协程
+https://www.cnblogs.com/tyomcat/p/5486827.html
+深入理解 RPC : 基于 Python 自建分布式高并发 RPC 服务
+https://blog.csdn.net/iodjSVf8U1J7KYc/article/details/80681627
+用Python开发Zeroc Ice应用
+https://www.cnblogs.com/JackeyLee/p/6221435.html
+
+Python 中的类（上）
+http://python.jobbole.com/82297/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+Python 中的类（中）
+http://python.jobbole.com/82308/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+Python 中的类（下）
+http://python.jobbole.com/82312/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+
