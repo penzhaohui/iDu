@@ -72,5 +72,43 @@ class SchedulerDemo(models.TransientModel):
             'domain': [('create_date', '>', (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'))],
             'views': [(tree_id.id, 'tree'), (form_id.id, 'form')],
             'target': 'current',
-            'context': None,
+            'flags': {
+                #'search_view': False,
+                'headless': False,
+                #'auto_search': False,
+                'hidden': True,
+                'disable_filters': True,
+                'disable_groupby': True,
+                'disable_favorites': True,
+                'disable_custom_filters': True,
+                'sidebar': True,
+                'views_switcher': False,
+                'action_buttons': False,
+                'pager': False,
+                'low_profile': False,
+                'display_title': False,
+                'initial_mode': 'edit',
+                'form': {
+                    'action_buttons': False,
+                    'initial_mode': 'edit',
+                    'options': {'mode': 'view'},
+                },
+                'tree': {
+                    'action_buttons': False,
+                    'disable_filters': True,
+                    'disable_groupby': True,
+                    'disable_favorites': True,
+                    'disable_custom_filters': True,
+                },
+                'list': {
+                    'action_buttons': False,
+                    'auto_search': False,
+                    'search_view': False,
+                    'disable_filters': True,
+                    'disable_groupby': True,
+                    'disable_favorites': True,
+                    'disable_custom_filters': True,
+                    'selectable': False
+                }
+            }
         }
