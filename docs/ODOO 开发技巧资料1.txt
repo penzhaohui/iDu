@@ -224,6 +224,9 @@ https://www.cnblogs.com/hellojesson/p/8144474.html
 Why the title is showing the record ID number when I edit a form in Odoo 8?
 https://stackoverflow.com/questions/31267175/why-the-title-is-showing-the-record-id-number-when-i-edit-a-form-in-odoo-8?lq=1
 
+onlineChatting-by-websocket-basedon-python
+python-p2p-chating
+https://github.com/LockeyCheng
 
 RPC 相关的资料
 =======================
@@ -261,4 +264,14 @@ Python 中的类（中）
 http://python.jobbole.com/82308/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
 Python 中的类（下）
 http://python.jobbole.com/82312/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+
+巧用 Odoo act_window 的 flags实现一些个性化的视图控制
+http://www.panssion.com:9090/2018/01/30/%E5%B7%A7%E7%94%A8-odoo-act_window-%E7%9A%84-flags%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E4%B8%AA%E6%80%A7%E5%8C%96%E7%9A%84%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6/
+用户用odoo 10标题栏按钮的一例需求及实现
+https://wenku.baidu.com/view/e25699ae4128915f804d2b160b4e767f5acf8089.html
+odoo view field option， action flage 参数
+https://www.cnblogs.com/alangwansui/p/4745957.html
+Odoo 使用do_action打开form视图，target为current时，直接到编辑界面
+https://blog.csdn.net/d305199/article/details/78741127
+
 
