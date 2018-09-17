@@ -53,3 +53,9 @@ https://segmentfault.com/a/1190000014758701
 odoo二次开发小知识点
 http://blog.51cto.com/11927232/2068191
 
+python tornado下logging.handlers.HTTPHandler多打印一个None的解决方案
+https://blog.csdn.net/emaste_r/article/details/78141820
+Python之日志处理（logging模块）
+https://www.cnblogs.com/yyds/p/6901864.html
+Good logging practice in Python
+https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/

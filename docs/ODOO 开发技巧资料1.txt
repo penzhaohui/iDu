@@ -274,4 +274,12 @@ https://www.cnblogs.com/alangwansui/p/4745957.html
 Odoo 使用do_action打开form视图，target为current时，直接到编辑界面
 https://blog.csdn.net/d305199/article/details/78741127
 
+Odoo升级崩溃解决方案
+https://blog.csdn.net/qq_36789367/article/details/80566838
+强制取消odoo模块升级动作
+https://blog.csdn.net/fengpeidong/article/details/82193099
+Data Migration
+https://odoo-development.readthedocs.io/en/latest/maintenance/data-migration.html
+odoo-sample
+https://github.com/alexis-via/odoo-sample
 
