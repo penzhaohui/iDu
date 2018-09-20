@@ -223,3 +223,63 @@ odoo开发笔记--前端搜索视图--按照时间条件筛选
 https://www.cnblogs.com/hellojesson/p/8144474.html
 Why the title is showing the record ID number when I edit a form in Odoo 8?
 https://stackoverflow.com/questions/31267175/why-the-title-is-showing-the-record-id-number-when-i-edit-a-form-in-odoo-8?lq=1
+
+onlineChatting-by-websocket-basedon-python
+python-p2p-chating
+https://github.com/LockeyCheng
+
+RPC 相关的资料
+=======================
+一个简单RPC框架是如何炼成的(I)——开局篇
+https://blog.csdn.net/crylearner/article/details/46899083
+一个简单RPC框架是如何炼成的(II)——制定RPC消息
+https://blog.csdn.net/crylearner/article/details/46899083
+一个简单RPC框架是如何炼成的(III)——实现带参数的RPC调用
+https://blog.csdn.net/crylearner/article/details/46899687
+一个简单RPC框架是如何炼成的(IV)——实现RPC消息的编解码
+https://blog.csdn.net/crylearner/article/details/46900203
+一个简单RPC框架是如何炼成的(V)——引入传输层
+https://blog.csdn.net/crylearner/article/details/46952765
+一个简单RPC框架是如何炼成的(VI)——引入服务注册机制
+https://blog.csdn.net/crylearner/article/details/46952977
+python 简单RPC示例
+https://www.jianshu.com/p/40af791a7b1e
+轻量级分布式 RPC 框架
+http://www.importnew.com/20327.html
+
+python使用SimpleXMLRPCServer实现简单的rpc
+https://blog.csdn.net/comprel/article/details/72633482
+用Python实现一个XML-RPC服务器
+https://www.jianshu.com/p/75526458e936
+python并发编程之多进程、多线程、异步和协程
+https://www.cnblogs.com/tyomcat/p/5486827.html
+深入理解 RPC : 基于 Python 自建分布式高并发 RPC 服务
+https://blog.csdn.net/iodjSVf8U1J7KYc/article/details/80681627
+用Python开发Zeroc Ice应用
+https://www.cnblogs.com/JackeyLee/p/6221435.html
+
+Python 中的类（上）
+http://python.jobbole.com/82297/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+Python 中的类（中）
+http://python.jobbole.com/82308/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+Python 中的类（下）
+http://python.jobbole.com/82312/?utm_source=blog.jobbole.com&utm_medium=relatedPosts
+
+巧用 Odoo act_window 的 flags实现一些个性化的视图控制
+http://www.panssion.com:9090/2018/01/30/%E5%B7%A7%E7%94%A8-odoo-act_window-%E7%9A%84-flags%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E4%B8%AA%E6%80%A7%E5%8C%96%E7%9A%84%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6/
+用户用odoo 10标题栏按钮的一例需求及实现
+https://wenku.baidu.com/view/e25699ae4128915f804d2b160b4e767f5acf8089.html
+odoo view field option， action flage 参数
+https://www.cnblogs.com/alangwansui/p/4745957.html
+Odoo 使用do_action打开form视图，target为current时，直接到编辑界面
+https://blog.csdn.net/d305199/article/details/78741127
+
+Odoo升级崩溃解决方案
+https://blog.csdn.net/qq_36789367/article/details/80566838
+强制取消odoo模块升级动作
+https://blog.csdn.net/fengpeidong/article/details/82193099
+Data Migration
+https://odoo-development.readthedocs.io/en/latest/maintenance/data-migration.html
+odoo-sample
+https://github.com/alexis-via/odoo-sample
+
