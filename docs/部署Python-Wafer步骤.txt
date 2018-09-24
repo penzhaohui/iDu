@@ -1,0 +1,53 @@
+1，安装git和pip
+$ yum install git
+$ sudo yum -y install epel-release
+$ sudo yum -y install python-pip
+
+$ git --version
+$ python --version
+
+2，获取指定分支的最新代码
+$ git clone -b v1.0.0.0 https://penzhaohui:change_2020@github.com/listart/python-wafer.git
+
+$ git fetch origin v1.0.0.0:v1.0.0.0
+$ git pull origin v1.0.0.0:v1.0.0.0
+
+3，更新host文件
+echo "120.132.92.204 demo.idu.com"   >> /etc/hosts
+echo "120.132.56.74 gate.idu.com"   >> /etc/hosts
+echo "120.132.56.74 connector.idu.com"   >> /etc/hosts
+echo "120.132.56.74 session.idu.com"   >> /etc/hosts
+echo "120.132.92.204	portal.idu.com"   >> /etc/hosts
+echo "120.132.92.204	server-1.idu.com"   >> /etc/hosts
+echo "120.132.92.204	template-1.idu.com"   >> /etc/hosts
+echo "120.132.92.204	template-2.idu.com"   >> /etc/hosts
+echo "120.132.92.204	template-3.idu.com"   >> /etc/hosts
+echo "120.132.92.204	mudan.idu.com"   >> /etc/hosts
+echo "120.132.92.204	dingtao.idu.com"   >> /etc/hosts
+echo "120.132.92.204	caoxian.idu.com"   >> /etc/hosts
+echo "120.132.92.204	heze.idu.com"   >> /etc/hosts
+echo "120.132.92.204	changsha.idu.com"   >> /etc/hosts
+
+$ cat /etc/hosts
+
+#120.132.56.74 connector.idu.com
+#120.132.56.74 gate.idu.com
+#120.132.56.74 session.idu.com
+
+4，启动实时聊天服务器
+pip install -r requirements.txt
+python wafer.py --server=session --port=8888 & 
+python wafer.py --server=connector --port=9090 &
+python wafer.py --server=gate --port=8080 &
+
+5，使用supervisor 管理多个进程服务
+sudo yum -y install supervisor
+supervisorctl
+supervisor> status    # 查看程序状态
+supervisor> stop tornadoes:*   # 关闭 tornadoes组 程序
+supervisor> start tornadoes:*  # 启动 tornadoes组 程序
+supervisor> restart tornadoes:*    # 重启 tornadoes组 程序
+supervisor> update    ＃ 重启配置文件修改过的程序
+
+参考资料：https://blog.csdn.net/qq_35556064/article/details/81210090
+
