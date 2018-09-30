@@ -1,0 +1,36 @@
+查看想开的端口是否已开
+firewall-cmd --query-port=80/tcp
+
+开启端口
+firewall-cmd --zone=public --add-port=80/tcp –permanent
+firewall-cmd  --reload
+systemctl stop firewalld.service  
+systemctl start firewalld.service 
+
+
+若移除端口 
+$ firewall-cmd --permanent --remove-port=xxxx/tcp
+firewall-cmd --zone=public --add-port=80/tcp --permanent 
+firewall-cmd --zone= public --remove-port=9000/tcp --permanent
+
+
+CentOS 配置防火墙操作实例（启、停、开、闭端口）：
+注：防火墙的基本操作命令：
+查询防火墙状态:
+[root@localhost ~]# service   iptables status
+停止防火墙:
+[root@localhost ~]# service   iptables stop
+启动防火墙:
+[root@localhost ~]# service   iptables start
+重启防火墙:
+[root@localhost ~]# service   iptables restart
+永久关闭防火墙:
+[root@localhost ~]# chkconfig   iptables off
+永久关闭后启用:
+[root@localhost ~]# chkconfig   iptables on
+
+CentOS7使用firewalld打开关闭防火墙与端口端口
+https://www.cnblogs.com/moxiaoan/p/5683743.html
+
+怎样测试某个端口是否打开
+https://jingyan.baidu.com/article/d169e1864b484f436611d8bf.html

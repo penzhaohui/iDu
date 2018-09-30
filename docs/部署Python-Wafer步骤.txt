@@ -1,3 +1,63 @@
+微信聊天服务器部署：
+1，修改AppID和AppSecret，并修改代码python-wafer\config.py
+
+APP_ID = 'wx440e7e86c1665520'
+APP_SECRET = 'a15daf6ef6ca01ddb33e735430af1c95'
+备注： 彭朝辉的微信开发号
+
+2，复制证书，并修改代码python-wafer\wafer.py
+connector.cloudzst.cn.pem
+connector.cloudzst.cn.key
+
+3，修改端口：
+https://connector.cloudzst.cn
+https://connector.cloudzst.cn:8081
+https://connector.cloudzst.cn:8889
+https://connector.cloudzst.cn:9091
+https://restapi.amap.com    
+wss://connector.cloudzst.cn    
+wss://connector.cloudzst.cn:9091 
+
+4，将修改的文件上传，共4个：
+\python-wafer\config.py
+\python-wafer\wafer.py
+connector.cloudzst.cn.key
+connector.cloudzst.cn.perm
+
+5，启动聊天服务器
+cd /root/dev/python-wafer
+python wafer.py --server=session --port=8889 & 
+python wafer.py --server=connector --port=9091 &
+python wafer.py --server=gate --port=8081 &
+
+测试该网址可访问且证书合法
+https://connector.cloudzst.cn:8081/citizen/profile?id=1&sky=1
+注意：服务器需要打开8080和9090端口
+
+6，登录微信公众平台-小程序，进行合法请求域名配置
+https://connector.cloudzst.cn
+https://connector.cloudzst.cn:8081
+https://connector.cloudzst.cn:8889
+https://connector.cloudzst.cn:9091
+https://restapi.amap.com    
+wss://connector.cloudzst.cn    
+wss://connector.cloudzst.cn:9091       
+https://idu-1257283735.cos.ap-chengdu.myqcloud.com
+
+7，发布小程序
+修改聊天服务器的链接：
+\Alarm\config.js
+修改微信小程序的AppID和Secrect Key:
+\Alarm\project.config
+发布测试：
+
+
+	
+https://wxbj-1257728445.cos.ap-beijing.myqcloud.com
+
+
+==================================
+
 1，安装git和pip
 $ yum install git
 $ sudo yum -y install epel-release
@@ -28,6 +88,10 @@ echo "120.132.92.204	caoxian.idu.com"   >> /etc/hosts
 echo "120.132.92.204	heze.idu.com"   >> /etc/hosts
 echo "120.132.92.204	changsha.idu.com"   >> /etc/hosts
 
+echo "120.132.56.74 gate.idu.com"   >> /etc/squid/hosts
+echo "120.132.56.74 connector.idu.com"   >> /etc/squid/hosts
+echo "120.132.56.74 session.idu.com"   >> /etc/squid/hosts
+
 $ cat /etc/hosts
 
 #120.132.56.74 connector.idu.com
@@ -51,3 +115,5 @@ supervisor> update    ＃ 重启配置文件修改过的程序
 
 参考资料：https://blog.csdn.net/qq_35556064/article/details/81210090
 
+
+docker exec -i -t  idu /bin/bash
