@@ -51,3 +51,62 @@ supervisor> update    ＃ 重启配置文件修改过的程序
 
 参考资料：https://blog.csdn.net/qq_35556064/article/details/81210090
 
+
+以下是自动化编译与部署环境搭建
+================================================
+第一步，创建Dockerfile
+$ vi /mnt/docker/Dockerfile
+-----------------------
+FROM jenkins
+USER root
+RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list && \
+wget http://mirrors.163.com/.help/sources.list.jessie -O /etc/apt/sources.list
+
+RUN apt-get update && apt-get install -y git libltdl-dev
+-----------------------
+
+第二步，生成新的镜像jenkins:v1
+$ docker build -t jenkins:v1 .
+
+rm -rf /var/jenkins_home (注：重装是需要清空)
+mkdir /var/jenkins_home
+mkdir /usr/local/maven
+mkdir /usr/local/jdk 
+
+第三步，安装Jenkins
+$ docker run -d \
+--name jenkins \
+--restart=always \
+-p 7070:8080 \
+-v /var/jenkins_home:/var/jenkins_home \
+-v /usr/local/apache-maven-3.5.0:/usr/local/maven \
+-v /usr/local/jdk1.8.0_45:/usr/local/jdk \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $(which docker):/usr/bin/docker \
+-v ~/.ssh:/root/.ssh \
+jenkins:v1
+
+第四步，在宿主机执行如下命令
+docker exec -i -t  jenkins /bin/bash
+
+执行如下命令，将获取到的密钥更新到Jenkins网站，开始进一步的安装
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+管理员的信息
+U/P: peter.peng/peter.peng
+email: peter.peng@opengov.top
+
+Creating a personal access token for the command line
+https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+手把手教你搭建Jenkins+Github持续集成环境
+https://blog.csdn.net/u011904605/article/details/54590383
+Jenkins与Github集成
+https://www.cnblogs.com/weschen/p/6867885.html
+
+WebHook Url: http://120.132.56.74:7070/github-webhook/
+Personal Access Token: c7b7d869d7e2f53922881101acac8b54b99783c1
+Secret: 13572468
+
+
+
+

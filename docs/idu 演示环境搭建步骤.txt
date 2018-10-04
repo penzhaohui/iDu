@@ -170,6 +170,8 @@ docker cp /mnt/iDu/extra-addons/idu_cm_social_organization idu:/mnt/idu
 docker cp /mnt/iDu/extra-addons/idu_cm_social_security idu:/mnt/idu
 docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/idu
 
+docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/addons/iduu
+
 rm -rf idu_cm_asset
 rm -rf idu_cm_config
 rm -rf idu_cm_core
