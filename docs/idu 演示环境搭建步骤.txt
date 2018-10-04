@@ -1,11 +1,5 @@
 搭建idu 演示环境
 
-uclistart
-(内) 10.42.116.188  
-(外) 120.132.92.204 Bgp 
-usr:root
-pwd:Transture2018
-
 1，删除所有docker container
 https://blog.csdn.net/jeikerxiao/article/details/78476925
 docker stop $(docker ps -q) & docker rm $(docker ps -aq)
@@ -146,6 +140,10 @@ docker cp /mnt/iDu/extra-addons/idu_cm_school_security idu:/mnt/addons/idu
 docker cp /mnt/iDu/extra-addons/idu_cm_social_conflict idu:/mnt/addons/idu
 docker cp /mnt/iDu/extra-addons/idu_cm_social_organization idu:/mnt/addons/idu
 docker cp /mnt/iDu/extra-addons/idu_cm_social_security idu:/mnt/addons/idu
+docker cp /root/temp/idu_wechat_alarm idu:/mnt/addons/idu
+
+/root/temp
+
 docker cp /mnt/iDu/extra-addons/chatter_zht idu:/mnt/addons/idu
 
 docker cp /mnt/iDu/3rd-addons/auth_oauth_check_client_id idu:/mnt/idu

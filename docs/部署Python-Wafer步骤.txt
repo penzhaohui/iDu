@@ -1,3 +1,63 @@
+微信聊天服务器部署：
+1，修改AppID和AppSecret，并修改代码python-wafer\config.py
+
+APP_ID = 'wx440e7e86c1665520'
+APP_SECRET = 'a15daf6ef6ca01ddb33e735430af1c95'
+备注： 彭朝辉的微信开发号
+
+2，复制证书，并修改代码python-wafer\wafer.py
+connector.cloudzst.cn.pem
+connector.cloudzst.cn.key
+
+3，修改端口：
+https://connector.cloudzst.cn
+https://connector.cloudzst.cn:8081
+https://connector.cloudzst.cn:8889
+https://connector.cloudzst.cn:9091
+https://restapi.amap.com    
+wss://connector.cloudzst.cn    
+wss://connector.cloudzst.cn:9091 
+
+4，将修改的文件上传，共4个：
+\python-wafer\config.py
+\python-wafer\wafer.py
+connector.cloudzst.cn.key
+connector.cloudzst.cn.perm
+
+5，启动聊天服务器
+cd /root/dev/python-wafer
+python wafer.py --server=session --port=8889 & 
+python wafer.py --server=connector --port=9091 &
+python wafer.py --server=gate --port=8081 &
+
+测试该网址可访问且证书合法
+https://connector.cloudzst.cn:8081/citizen/profile?id=1&sky=1
+注意：服务器需要打开8080和9090端口
+
+6，登录微信公众平台-小程序，进行合法请求域名配置
+https://connector.cloudzst.cn
+https://connector.cloudzst.cn:8081
+https://connector.cloudzst.cn:8889
+https://connector.cloudzst.cn:9091
+https://restapi.amap.com    
+wss://connector.cloudzst.cn    
+wss://connector.cloudzst.cn:9091       
+https://idu-1257283735.cos.ap-chengdu.myqcloud.com
+
+7，发布小程序
+修改聊天服务器的链接：
+\Alarm\config.js
+修改微信小程序的AppID和Secrect Key:
+\Alarm\project.config
+发布测试：
+
+
+	
+https://wxbj-1257728445.cos.ap-beijing.myqcloud.com
+
+
+==================================
+
 1，安装git和pip
 $ yum install git
 $ sudo yum -y install epel-release
@@ -28,6 +88,10 @@ echo "120.132.92.204	caoxian.idu.com"   >> /etc/hosts
 echo "120.132.92.204	heze.idu.com"   >> /etc/hosts
 echo "120.132.92.204	changsha.idu.com"   >> /etc/hosts
 
+echo "120.132.56.74 gate.idu.com"   >> /etc/squid/hosts
+echo "120.132.56.74 connector.idu.com"   >> /etc/squid/hosts
+echo "120.132.56.74 session.idu.com"   >> /etc/squid/hosts
+
 $ cat /etc/hosts
 
 #120.132.56.74 connector.idu.com
@@ -52,61 +116,4 @@ supervisor> update    ＃ 重启配置文件修改过的程序
 参考资料：https://blog.csdn.net/qq_35556064/article/details/81210090
 
 
-以下是自动化编译与部署环境搭建
-================================================
-第一步，创建Dockerfile
-$ vi /mnt/docker/Dockerfile
------------------------
-FROM jenkins
-USER root
-RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list && \
-wget http://mirrors.163.com/.help/sources.list.jessie -O /etc/apt/sources.list
-
-RUN apt-get update && apt-get install -y git libltdl-dev
------------------------
-
-第二步，生成新的镜像jenkins:v1
-$ docker build -t jenkins:v1 .
-
-rm -rf /var/jenkins_home (注：重装是需要清空)
-mkdir /var/jenkins_home
-mkdir /usr/local/maven
-mkdir /usr/local/jdk 
-
-第三步，安装Jenkins
-$ docker run -d \
---name jenkins \
---restart=always \
--p 7070:8080 \
--v /var/jenkins_home:/var/jenkins_home \
--v /usr/local/apache-maven-3.5.0:/usr/local/maven \
--v /usr/local/jdk1.8.0_45:/usr/local/jdk \
--v /var/run/docker.sock:/var/run/docker.sock \
--v $(which docker):/usr/bin/docker \
--v ~/.ssh:/root/.ssh \
-jenkins:v1
-
-第四步，在宿主机执行如下命令
-docker exec -i -t  jenkins /bin/bash
-
-执行如下命令，将获取到的密钥更新到Jenkins网站，开始进一步的安装
-cat /var/jenkins_home/secrets/initialAdminPassword
-
-管理员的信息
-U/P: peter.peng/peter.peng
-email: peter.peng@opengov.top
-
-Creating a personal access token for the command line
-https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-手把手教你搭建Jenkins+Github持续集成环境
-https://blog.csdn.net/u011904605/article/details/54590383
-Jenkins与Github集成
-https://www.cnblogs.com/weschen/p/6867885.html
-
-WebHook Url: http://120.132.56.74:7070/github-webhook/
-Personal Access Token: c7b7d869d7e2f53922881101acac8b54b99783c1
-Secret: 13572468
-
-
-
-
+docker exec -i -t  idu /bin/bash
