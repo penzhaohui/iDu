@@ -67,6 +67,23 @@ https://www.cnblogs.com/dancesir/p/7326321.html
 ODOO 开发学习系列资料
 http://odoo-development.readthedocs.io/en/latest/first-steps.html
 
+在 Odoo 中生成唯一不重复的序列号
+https://segmentfault.com/a/1190000013220290
+Odoo 使用 ir.sequence 生成序列号
+https://jalena.bcsytv.com/archives/1877
+odoo根据当前时间生成序列号
+https://blog.csdn.net/u012441139/article/details/61923345
+批次号和序列号的区别是什么？
+https://www.odoo.com/documentation/user/9.0/zh_CN/inventory/management/lots_serial_numbers/differences.html
+如何使用序列号
+https://www.odoo.com/documentation/user/9.0/zh_CN/inventory/management/lots_serial_numbers/serial_numbers.html
+odoo10 骚操作（有遇到就更新）
+https://www.e-learn.cn/content/qita/996310
+odoo/openerp 多字段搜索（name_search）
+https://blog.csdn.net/shanzhizi/article/details/51576547
+[odoo]去除Many2one字段的“创建并编辑”选项，防止用户误操作而重复创建记录
+https://blog.csdn.net/bourne_again/article/details/72896970
+
 title "Create Certificate for ODOO"
 
 echo "step 1. init the path for OpenSSL"
