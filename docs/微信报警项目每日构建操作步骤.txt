@@ -1,0 +1,71 @@
+Portainer: http://106.75.171.47:9000
+Jenkins: http://106.75.171.47:5050/ 
+
+UCloud云服务器：106.75.171.47
+
+
+
+1. 部署idu后台的shell脚本
+====================================
+
+docker container rm -f idu-alarm
+
+docker container rm -f idu-alarm-nginx
+
+docker run \
+-d \
+-p 8069:8069 \
+--name idu-alarm \
+--network=idu-alarm-saas-network \
+-e ODOO_MASTER_PASS=admin \
+-e DB_PORT_5432_TCP_ADDR=idu-alarm-db \
+-t idu/alarm:1.0
+
+docker run  \
+-d \
+-p 80:80 \
+--name idu-alarm-nginx \
+--network=idu-alarm-saas-network \
+-t idu/nginx
+
+
+docker ps -a
+
+手工测试，直接打开URL:http://106.75.171.47/
+
+2. 部署Python-wafer实时聊天服务器
+
+docker container rm -f idu-chat
+
+docker run -d --name idu-chat --restart=always -p 8081:8080 -p 9091:9090 -v /var/python-wafer/logs:/etc/python-wafer/logs -v /var/python-wafer/certs:/etc/python-wafer/certs -v /var/python-wafer/config:/etc/python-wafer/config -t idu/chat:1.0
+
+
+手工测试，直接打开URL:https://connector.cloudzst.cn:8080/citizen/profile?id=1&skey=1
+
+==============================================
+docker save -o docker-idu-alarm.tar idu/alarm:1.0
+docker save -o docker-idu-nginx.tar idu/nginx
+docker save -o docker-idu-jenkins.tar idu/jenkins
+docker save -o docker-idu-chat.tar idu/chat:1.0
+
+docker load < docker-idu-alarm.tar 
+docker load < docker-idu-nginx.tar
+docker load < docker-idu-jenkins.tar 
+
+开启防火墙的命令
+============================
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --zone=public --add-port=9090/tcp --permanent
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+
+firewall-cmd --reload
+
+firewall-cmd --query-port=8080/tcp
+firewall-cmd --query-port=9090/tcp
+
+netstat -lnp|grep 8080
+
+/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT 
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT 
+/etc/init.d/iptables save   保存修改
+service iptables restart    重启防火墙，修改生效
