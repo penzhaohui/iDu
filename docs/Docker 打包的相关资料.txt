@@ -1,0 +1,66 @@
+Docker Error: Returned a Non-zero Code: 137
+https://samwize.com/2016/05/19/docker-error-returned-a-non-zero-code-137/
+-- This means a out of memory error.
+
+returned a non-zero code: 56
+https://github.com/tensorflow/serving/issues/445
+-- I guess the server is exceedingly slow sometimes.
+
+-- Debian Jessie installer freezes during "Processing triggers for libc-bin"
+https://packages.debian.org/jessie/arm64/libc-bin/download
+-- Download Page for libc-bin_2.19-18+deb8u10_arm64.deb on 64-bit ARMv8 machines
+
+debian系linux，更换apt-get官方源为国内源
+https://blog.csdn.net/yjk13703623757/article/details/78943345
+
+【Python pip】ReadTimeoutError: HTTPSConnectionPool(host='pypi.python.org', port=443): Read ti med out.
+https://www.jianshu.com/p/29961138dc10
+https://blog.csdn.net/lijiang1991/article/details/51775896
+
+pip 添加trusted host 一劳永逸
+https://www.cnblogs.com/lfoder/p/5878074.html
+pip配置源
+https://blog.csdn.net/permike/article/details/51068916
+centos7修改pip源
+https://blog.csdn.net/hopygreat/article/details/78344933
+
+从github上fork了一个仓库后保持与原仓库代码同步的操作方法
+https://blog.csdn.net/yzpbright/article/details/82178922
+
+打造自己的gogs镜像
+https://www.jianshu.com/p/1ea6375d8275
+   
+git镜像仓库
+https://lindexi.github.io/lindexi/post/git%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.html
+
+CentOS如何挂载硬盘
+https://jingyan.baidu.com/article/3c48dd34b1163fe10be358bd.html
+centos查看磁盘空间大小
+https://blog.csdn.net/u013761206/article/details/72899493/
+Docker: 如何修改 Docker 的镜像存储位置
+https://www.cnblogs.com/csharpsharper/p/5685263.html
+
+在 docker 容器里使用 nginx-proxy 实现自动反向代理及负载均衡
+https://www.jianshu.com/p/8881b7860b6a
+在容器中利用Nginx-proxy实现多域名的自动反向代理、免费SSL证书
+https://www.cnblogs.com/chenug/p/6916639.html
+在一台主机docker上跑着数个不同的网站容器，如何把80和443端口流量正确的转发给对应容器呢？
+https://segmentfault.com/q/1010000009840427/a-1020000009851933
+Docker 中国官方镜像加速
+https://www.docker-cn.com/registry-mirror
+
+
+
+https://blog.csdn.net/yujihu989/article/details/78647834
+
+小程序与WebRTC联姻能擦出怎样的火花？
+https://www.cnblogs.com/qcloud1001/p/9561609.html
+
+https://github.com/webrtc/apprtc
+https://github.com/ant-media/Ant-Media-Server
+
+善用ODOO模块钩子函数和模型初始化函数
+https://blog.csdn.net/cmzhuang/article/details/79970472
+
+odoo自定义模块的安装动作
+http://www.mamicode.com/info-detail-2189628.html

@@ -1,0 +1,29 @@
+docker run \
+-d \
+-p 6000:5432  \
+-v /var/idu/pgmaster/data:/var/lib/postgresql/data \
+-e POSTGRES_USER=odoo \
+-e POSTGRES_PASSWORD=odoo \
+--name pgmaster  \
+postgres:9.5
+
+docker run \
+-d \
+-p 6001:5432  \
+-v /var/idu/pgslave/data:/var/lib/postgresql/data \
+-e POSTGRES_USER=odoo \
+-e POSTGRES_PASSWORD=odoo \
+--name pgslave  \
+postgres:9.5
+
+
+容器 - pgmaster
+psql -hlocalhost -p5432 -Uodoo
+CREATE ROLE replication WITH REPLICATION PASSWORD 'replication' LOGIN;
+\du
+\q
+
+容器 - pgslave
+su - postgres
+rm -rf /var/lib/postgresql/data/*
+pg_basebackup -h 172.17.0.3 -U replication -D /var/lib/postgresql/data -X stream -P

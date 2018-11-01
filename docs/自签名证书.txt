@@ -1,0 +1,16 @@
+修武域名管理后台
+http://www.59.cn/
+xw1211
+111qqq
+
+TX AVQuality Monitor
+https://avq.avc.qcloud.com/qcloud/
+自签名免费SSL证书
+https://www.chinassl.net/ssltools/free-ssl.html
+SSL 工具
+https://www.myssl.cn/tools/downloadchain.html
+
+只有安卓系统的浏览器提示证书不受信任的问题 ----- 证书链不完整的解决办法
+https://blog.csdn.net/leisurelen/article/details/72459492?utm_source=itdadao&utm_medium=referral
+https配置问题：当前网站证书不可信且证书长度为1，可能是服务器没有配置完整的证书链
+https://blog.csdn.net/qq_26744901/article/details/80870122

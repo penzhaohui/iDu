@@ -1,0 +1,67 @@
+TestLink教程：一份完整指南
+https://blog.csdn.net/cjtxzg/article/details/80498226
+在Docker环境下如何搭建测试管理平台
+http://www.51testing.com/html/81/n-3723481.html
+
+使用docker快速搭建mantisbt缺陷管理平台
+https://blog.csdn.net/rainflood/article/details/77619693
+
+BUG管理工具MantisBT的安装配置及使用，亲测可用
+https://blog.csdn.net/zou15093087438/article/details/79414438
+
+Java+Testlink实现接口自动化测试
+https://blog.csdn.net/u011541946/article/category/7702422
+接口自动化 基于python+Testlink+Jenkins实现的接口自动化测试框架 
+http://blog.sina.com.cn/s/blog_13cc013b50102w94u.html
+基于python+Testlink+Jenkins实现的接口自动化测试框架V3.0
+https://testerhome.com/topics/7992
+
+testlink常用的方法：http://testlinkjavaapi.sourceforge.net/implemented_methods.html
+testlink接口：http://testlinkjavaapi.sourceforge.net/structure.html
+
+docker network create testlink-tier
+
+https://hub.docker.com/r/bitnami/testlink/
+
+docker volume create --name mariadb_data
+
+docker run -d --name mariadb \
+ -e ALLOW_EMPTY_PASSWORD=yes \
+ -e MARIADB_USER=bn_testlink \
+ -e MARIADB_DATABASE=bitnami_testlink \
+ --net testlink-tier \
+ --volume mariadb_data:/bitnami \
+ bitnami/mariadb:latest
+
+ docker volume create --name testlink_data
+
+ docker run -d --name testlink -p 8000:80 -p 443:443 \
+ -e ALLOW_EMPTY_PASSWORD=yes \
+ -e TESTLINK_DATABASE_USER=bn_testlink \
+ -e TESTLINK_DATABASE_NAME=bitnami_testlink \
+ --net testlink-tier \
+ --volume testlink_data:/bitnami \
+ bitnami/testlink:latest
+ 
+docker logs testlink
+
+docker run -d --name mantisbtdb \
+--net testlink-tier \
+-e MYSQL_ROOT_PASSWORD=root \
+-e MYSQL_DATABASE=bugtracker \
+-e MYSQL_USER=mantisbt \
+-e MYSQL_PASSWORD=mantisbt \
+mysql:5.7.20
+
+docker exec -ti mantisbtdb /bin/bash
+mysql -uroot -proot
+show databases;
+select host,user from mysql.user;
+show grants for mantisbt;
+
+
+docker run -d --name mantisbt \
+--net testlink-tier \
+-d -p 8001:80 \
+--link mantisbtdb \
+vimagick/mantisbt:latest

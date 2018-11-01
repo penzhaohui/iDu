@@ -1,0 +1,72 @@
+debian系列系统查看时区以及更改时区方法	
+https://jingyan.baidu.com/article/fec7a1e5ec8e341191b4e75f.html
+
+centos7 Docker 同一个宿主机器上容器间相互访问 No route to host
+https://blog.csdn.net/QingKong999/article/details/79750383
+
+Docker容器与容器云之Docker单机集群部署案例
+https://www.cnblogs.com/wcwen1990/p/7128651.html
+
+Docker 集群环境实现的新方式
+https://www.cnblogs.com/chen110xi/p/6349454.html
+
+使用Docker安装部署Redis Cluster集群
+https://blog.csdn.net/lee9213/article/details/80321956
+
+关于redis的主从、哨兵、集群
+https://blog.csdn.net/c295477887/article/details/52487621
+Docker化高可用redis集群
+http://www.cnblogs.com/aliyunblogs/p/5728861.html
+
+Docker + PostgreSQL 主从环境搭建
+https://blog.csdn.net/qq_28804275/article/details/80891936
+基于 docker 的 postgres 主从流复制部署
+https://www.jianshu.com/p/343c3c8047f0
+PostgreSQL 使用Docker搭建流复制测试环境
+https://www.cnblogs.com/cxy486/p/5164612.html
+PostgreSQL定时自动备份
+https://blog.csdn.net/sunbocong/article/details/77936601
+Postgresql流复制+pgpool实现高可用
+https://www.cnblogs.com/cxy486/p/5327068.html
+搭建双节点pg_pool+主从postgresql架构
+http://www.cnblogs.com/EikiXu/p/9773694.html
+PG的两种集群技术：Pgpool-II与Postgres-XL
+https://blog.csdn.net/panbiao1999/article/details/78064821
+解决postgresql在docker中无法保存状态的问题
+https://www.cnblogs.com/runnerjack/p/7417881.html
+debian8.4下配置pgpool+pg9.5双主备
+http://blog.51cto.com/481814/1769092
+PostgreSQL+pgpooll+Keepalived双机HA方案
+https://www.cnblogs.com/songyuejie/p/4561089.html
+
+pg_basebackup 命令行参数
+https://blog.csdn.net/feixiangtianshi/article/details/49152691
+CentOS7下PostgreSQL安装过程
+https://www.cnblogs.com/hannyblogs/p/6535664.html
+Barman 安装
+https://blog.csdn.net/zhaowenzhong/article/details/80774173
+欢迎使用 pgpool-II 手册
+http://www.pgpool.net/docs/pgpool-II-3.5.4/doc/pgpool-zh_cn.html#reload
+pgpool-II 4.0.0 Documentation
+http://www.pgpool.net/docs/latest/en/html/index.html
+PgPool Downloads
+http://www.pgpool.net/mediawiki/index.php/Downloads
+如何构建一个php7-alpine的docker镜像
+https://segmentfault.com/a/1190000011876870
+
+简单版 - Postgresql流复制+pgpool实现高可用
+=================================================
+https://hub.docker.com/r/hegand/pgpool/
+docker run -d 
+-p 9999:9999 
+-p 9898:9898 
+-v /local/dir/pgpool.conf:/etc/pgpool.conf:ro 
+-v /local/dir/pool_passwd:/etc/pool_passwd:rw 
+-v /local/dir/pool_hba.conf:/etc/pool_hba.conf:ro 
+hegand/pgpool
+
+https://www.cnblogs.com/cxy486/p/5327068.html
+pcp.conf 用于管理查、看节点信息，如加入新节点。该文件主要是存储用户名及md5形式的密码。
+pgpool.conf 用于设置pgpool的模式，主次数据库的相关信息等。
+pool_hba.conf 用于认证用户登录方式，如客户端IP限制等，类似于postgresql的pg_hba.conf文件。
+pool_passwd 用于保存相应客户端登录帐号名及md5密码。
