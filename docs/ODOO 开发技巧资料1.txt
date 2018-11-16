@@ -283,3 +283,8 @@ https://odoo-development.readthedocs.io/en/latest/maintenance/data-migration.htm
 odoo-sample
 https://github.com/alexis-via/odoo-sample
 
+彻底解决Odoo8.0单时区应用中的时区问题
+https://www.cnblogs.com/jacker1979/p/4670667.html
+odoo 的时差 坑 [updated]
+http://www.bubuko.com/infodetail-1582938.html
+
