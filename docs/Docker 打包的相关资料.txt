@@ -39,6 +39,14 @@ centos查看磁盘空间大小
 https://blog.csdn.net/u013761206/article/details/72899493/
 Docker: 如何修改 Docker 的镜像存储位置
 https://www.cnblogs.com/csharpsharper/p/5685263.html
+[Linux] -Docker修改空间大小
+https://www.cnblogs.com/HD/p/4807088.html
+docker导入镜像时候遇到微坑
+https://blog.csdn.net/technofiend/article/details/51072967?utm_source=blogxgwz1
+docker容器存放目录磁盘空间满了
+https://blog.csdn.net/niu_hao/article/details/78873076
+Docker镜像导致centos-root根分区容量爆满
+https://blog.csdn.net/zs1041126478/article/details/79202086
 
 在 docker 容器里使用 nginx-proxy 实现自动反向代理及负载均衡
 https://www.jianshu.com/p/8881b7860b6a
@@ -48,8 +56,13 @@ https://www.cnblogs.com/chenug/p/6916639.html
 https://segmentfault.com/q/1010000009840427/a-1020000009851933
 Docker 中国官方镜像加速
 https://www.docker-cn.com/registry-mirror
+Docker Hub镜像构建错误：returned a non-zero code: 8
+https://blog.csdn.net/chenyufeng1991/article/details/79842066
+dockerfile: returned a non-zero code: 100
+https://blog.csdn.net/tang05709/article/details/78249621
 
-
+git 创建tag , 查看tag ， 删除tag
+https://www.cnblogs.com/pansidong/p/7773873.html
 
 https://blog.csdn.net/yujihu989/article/details/78647834
 
@@ -64,3 +77,7 @@ https://blog.csdn.net/cmzhuang/article/details/79970472
 
 odoo自定义模块的安装动作
 http://www.mamicode.com/info-detail-2189628.html
+关于Docker目录挂载的总结
+https://www.linuxidc.com/Linux/2015-09/123519.htm
+Dockerfile实现修改docker容器hosts文件内容的方法
+http://blog.realjf.com/archives/62

@@ -55,8 +55,8 @@ http://blog.51cto.com/11927232/2068191
 
 python tornado下logging.handlers.HTTPHandler多打印一个None的解决方案
 https://blog.csdn.net/emaste_r/article/details/78141820
-Python之日志处理（logging模块）
 https://www.cnblogs.com/yyds/p/6901864.html
+Python之日志处理（logging模块）
 Good logging practice in Python
 https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/
 
@@ -88,9 +88,45 @@ https://baijiahao.baidu.com/s?id=1606298944149585443&wfr=spider&for=pc
 https://www.cnblogs.com/wainiwann/p/8921108.html
 DyncLang/DevLiveBook
 https://github.com/DyncLang/DevLiveBook
+视频私有云实战：基于Docker构建点播私有云平台
+http://www.cnblogs.com/wangyiyunxin/p/9245980.html
 
 openssl ec -outform PEM -inform PEM -in I:/python-wafer/performance_tester/public_key -out I:/python-wafer/performance_tester/public_key_ec
 openssl ec -in I:/python-wafer/performance_tester/private_key_ec -pubout -out I:/python-wafer/performance_tester/public_key_ec
 
 Celery 分布式任务队列快速入门
 https://www.cnblogs.com/alex3714/p/6351797.html
+实现WebSocket和WAMP协议的开源库WampSharp
+https://www.cnblogs.com/shanyou/p/8053091.html
+WAMP (Web Application Messaging Protocol)介绍
+https://www.jianshu.com/p/a53cd3032383
+Python操作分布式流处理系统Kafka
+https://blog.csdn.net/BF02jgtRS00XKtCx/article/details/78750316
+以Flink为例，消除流处理常见的六大谬见
+http://mobile.51cto.com/adatabase-524305.htm
+ToRPC(Tornado + RPC) 是一个的基于Tornado IOLoop的异步TCP和双向通信的RPC的Python实现
+https://github.com/yoki123/torpc
+tornado+jsonrpc
+https://www.cnblogs.com/rgcLOVEyaya/p/RGC_LOVE_YAYA_692days_820.html
+TORNADO-RPC
+https://github.com/joshmarshall/tornadorpc
+https://github.com/nikoloss/rose-dewdrop
+https://github.com/leporo/tornado-redis
+https://github.com/zhu327/tormq
+ZeroMQ - 三种模型的python实现
+https://www.cnblogs.com/zknublx/p/7866850.html
+Python之路-python(Queue队列、进程、Gevent协程、Select\Poll\Epoll异步IO与事件驱动)
+https://www.cnblogs.com/lei0213/p/5908243.html
+
+psycopg2.pool – Connections pooling / psycopg2.pool – 连接池 / postgresql 连接池
+https://www.cnblogs.com/xuchunlin/p/5631096.html
+Python PostgreSQL Connection Pooling Using Psycopg2
+https://pynative.com/psycopg2-python-postgresql-connection-pooling/
+psycopg2.pool – Connections pooling¶
+http://initd.org/psycopg/docs/pool.html#psycopg2-pool-connections-pooling
+Deprecation Warning on PersistentConnectionPool?
+https://github.com/psycopg/psycopg2/issues/486
+Python数据库连接池DBUtils
+https://www.cnblogs.com/moyand/p/9046862.html
+Python数据库连接池 《DBUtils用户指南》
+https://blog.csdn.net/weiwangchao_/article/details/79570872

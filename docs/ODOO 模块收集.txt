@@ -48,6 +48,8 @@ https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
 flectrahq - ODOO的替换版本
 https://flectrahq.com/odoo-community-vs-odoo-enterprise-vs-flectra-comparison
+云海信息 - 基于ODOO的旅游项目
+https://gitee.com/xjyhxxjs
 
 数据集成相关的模块：
 https://github.com/OCA/queue/tree/11.0/base_import_async

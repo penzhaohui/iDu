@@ -1,0 +1,23 @@
+Docker + Jenkins + Cordova建设移动端打包平台
+https://blog.csdn.net/yaoyasong/article/details/49949705
+
+微信小程序集成 Jenkins
+https://segmentfault.com/a/1190000016247970
+微信小程序开发工具 ubuntu linux版本
+https://blog.csdn.net/zhangyingguangails/article/details/72517182
+linux下安装微信小程序开发工具
+https://www.cnblogs.com/dakewei/p/7684462.html
+
+postman的使用方法详解！最全面的教程
+https://www.cnblogs.com/Skyyj/p/6856728.html
+Postman—如何导入和导出
+http://www.51testing.com/html/03/n-3726303.html
+newman-docker
+https://github.com/postmanlabs/newman-docker/blob/develop/images/alpine33/Dockerfile
+
+防盗链综述
+https://cloud.tencent.com/document/product/266/11243
+Referer 防盗链
+https://cloud.tencent.com/document/product/266/14046
+Key 防盗链
+https://cloud.tencent.com/document/product/266/14047
