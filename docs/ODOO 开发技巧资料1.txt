@@ -113,6 +113,8 @@ Odoo 中的 Controller
 http://www.cnblogs.com/kfx2007/p/4936156.html
 Odoo二次开发使用细节
 https://blog.csdn.net/dszgf5717/article/details/53259801
+Odoo开发手册-菜单项操作
+https://blog.csdn.net/tom21s/article/details/51737748
 
 Odoo 8.0 new API 之Environment
 https://www.cnblogs.com/kfx2007/p/3894723.html
@@ -302,3 +304,147 @@ http://caibaojian.com/weixinapp/weixinapp-x46e2jbf.html
 https://github.com/yingye/Blog/issues/8
 持续集成 每日优鲜便利购微信小程序集成 Jenkins 生成二维码发版
 https://testerhome.com/topics/14913
+
+Nginx反向代理Odoo后导致日志中Werkzeug记录的IP地址不正确的问题
+https://blog.csdn.net/J_z10/article/details/52119757
+Odoo项目Bug排查与修复笔记
+http://www.bubuko.com/infodetail-2492347.html
+odoo/openerp 多字段搜索（name_search）
+https://blog.csdn.net/shanzhizi/article/details/51576547
+关于odoo中__mainfest__.py字段含义、功能详解
+https://blog.csdn.net/Beyond_F4/article/details/81258017
+Odoo10参考系列--翻译模块
+https://blog.csdn.net/mzl87/article/details/79934334
+Odoo升级崩溃解决方案
+https://blog.csdn.net/qq_36789367/article/details/80566838
+Creating automated tests in Odoo
+https://www.odoo.yenthevg.com/creating-automated-tests-odoo/
+
+Odoo中的约束
+https://www.cnblogs.com/cnodoo/p/9280735.html
+ODOO 技术培训资料
+https://github.com/odoo/technical-training?tdsourcetag=s_pctim_aiomsg
+https://github.com/odoo/technical-training/tree/12.0-99-sysadmin?tdsourcetag=s_pctim_aiomsg
+非常好的ODOO开源资料，此处收集了很多的ODOO 模块
+https://github.com/niulinlnc?tab=repositories
+
+技巧：增加自定义按钮
+https://supportuae.wordpress.com/2017/09/06/how-to-add-button-in-tree-view-header-near-create-and-import-buttons-odoo10/
+技巧：自定义设置界面
+http://ludwiktrammer.github.io/odoo/custom-settings-odoo.html
+
+odoo9.0 如何将链接指向自定义form
+https://blog.csdn.net/odoo_autoyong/article/details/52120144
+
+odoo8.0【行级别权限】 变相实现员工只能看到归属自己的单据
+https://blog.csdn.net/odoo_autoyong/article/details/52193826
+
+http://plantuml.com/class-diagram
+
+Odoo的对象都有哪些预定义方法
+https://www.jianshu.com/p/09cdb694aa8c
+
+odoo V10中文参考手册（一：ORM API）
+https://www.jianshu.com/p/88f6f79756be
+Odoo ORM API（五)：Fields
+https://www.2cto.com/kf/201610/553984.html
+
+odoo10参考系列--视图一（列表视图）
+https://blog.csdn.net/mzl87/article/details/79745761
+Odoo10教程---模块化三：模型约束，高级视图，工作流，安全性，向导，国际化和报表等
+https://blog.csdn.net/mzl87/article/details/80159256
+odoo 中实现多列搜索
+https://wenku.baidu.com/view/0d52a0393186bceb18e8bb83.html
+Odoo 中如何在一个 form 中有条件的显示
+https://wenku.baidu.com/view/8e217101b14e852459fb57cd
+https://github.com/OpusVL/odoo-search-operators
+https://github.com/Therp/fulltextsearch
+Web timeline
+https://www.odoo.com/apps/modules/10.0/web_timeline/
+Search time range
+https://www.odoo.com/apps/modules/11.0/quick_search_time_range/
+
+odoo中Tree视图点击添加项目不弹窗只增加一行
+https://blog.csdn.net/ChaseNKSky/article/details/79799620
+Odoo 中如何在菜单后边显示数字
+http://blog.sina.com.cn/s/blog_729a47890102wnxb.html
+
+众多开源模块
+https://github.com/JayVora-SerpentCS/SerpentCS_Contributions
+https://github.com/niulinlnc/ongood-tools
+集成报表模块 - Jasper reports
+https://github.com/JayVora-SerpentCS/Jasperreports_odoo
+
+Odoo 模块开发规范常见约定
+http://www.oejia.net/blog/2017/11/02/odoo_specs.html
+Odoo 前端开发可用的内置JS功能介绍
+http://www.oejia.net/blog/2017/12/26/odoo_frontend_js_obj.htmlOdoo 
+视图之 act_window
+http://www.oejia.net/blog/2018/01/23/odoo_view_act_window.html
+Odoo 视图XML常用属性项说明
+http://www.oejia.net/blog/2018/01/23/odoo_xml_attr.html
+Odoo 如何隐藏超级管理员用户
+http://www.oejia.net/blog/2018/02/08/odoo_hide_root.html
+Odoo 列表视图如何开启横向自动滚动条
+http://www.oejia.net/blog/2018/02/08/odoo_tree_view_auto_scroll.html
+Odoo 中的列表页如何默认就显示出筛选及分组功能菜单
+http://www.oejia.net/blog/2018/02/08/odoo_visible_search_menu.htmlOdoo
+菜单美化的扩展模块
+http://www.oejia.net/blog/2018/07/07/oejia_menu_about.html
+在Odoo中使用task_queue实现异步任务队列
+http://www.oejia.net/blog/2018/07/09/odoo_task_queue.html
+Odoo 中的 domain 的解析及各种使用例子
+http://www.oejia.net/blog/2018/08/31/odoo_domain_all.html
+doo开发笔记：前端显示强制换行
+https://www.cnblogs.com/hellojesson/p/7736646.html
+odoo10设置cookie/session 过期时间/生命周期
+https://blog.csdn.net/haeasringnar/article/details/80107636
+在openerp的tree视图中设置字体及颜色
+https://blog.csdn.net/shanzhizi/article/details/48179171
+浅谈odoo 后台与前端文件（附件）的存储与下载
+https://www.cnblogs.com/ljwTiey/p/7348291.html
+odoo11创建自定义模块源代码
+https://blog.csdn.net/zzlyx99/article/details/82701297
+odoo开发笔记 -- 附件上传
+https://www.cnblogs.com/hellojesson/p/8390635.html
+
+odoo do_action弹框只读模式
+https://blog.csdn.net/u012441139/article/details/84140696
+odoo开发笔记 --- tree视图修改字体颜色
+https://blog.csdn.net/Katherine130/article/details/79108958
+odoo10设置cookie/session 过期时间/生命周期
+https://blog.csdn.net/haeasringnar/article/details/80107636
+odoo filter 日期
+https://www.cnblogs.com/alangwansui/
+Odoo8.0二次开发之--在搜索栏中创建本周，本月，上周，上月并按周按月分组
+https://blog.csdn.net/rona_lin/article/details/47018045
+odoo  的js框架的学习源码的学习
+http://blog.sina.com.cn/s/blog_bc7dee2d0102wa2r.html
+odoo开发笔记 -- odoo10 视图界面根据字段状态，动态隐藏创建&编辑按钮
+https://www.cnblogs.com/hellojesson/p/9035739.html
+Odoo Domain条件表达式写法总结
+https://wenku.baidu.com/view/bfc036cafad6195f302ba609.html
+Odoo 模块推荐——Web Notify
+https://ruterly.com/2019/01/17/Odoo-Module-Recommend-Web-Notify/
+
+odoo中fields_view_get的使用示例
+http://www.khcloud.net:4082/?thread-170.htm
+How-To (tech) Dynamically Modify Your View!
+http://elico-corp.com.sg/2015/10/01/how-to-tech-dynamically-modify-your-view/
+
+Odoo：全球第一免费开源ERP权威性能测试报告完整版（绝对珍藏）
+https://www.cnblogs.com/yangxunbo/archive/2018/11/22/10003132.html
+Odoo环境下Ubuntu服务器性能优化--参数调整
+https://www.cnblogs.com/SunOne/articles/5261769.html
+Odoo 的静态资源优化方案
+http://www.oejia.net/blog/2016/12/16/odoo_static.html
+odoo 中性能提升关键点
+http://blog.sina.com.cn/s/blog_bc7dee2d0102x9dx.html
+大幅提升性能方法之关闭后台邮件机制
+http://www.odoomk.com/forum/t/49
+odoo服务器性能调优以及负载均衡
+https://www.jianshu.com/p/906dbd399fd6
+解决Odoo访问fonts.googleapis.com导致速度慢的问题
+https://blog.csdn.net/z_yong_cool/article/details/52367178
+浏览器每次访问odoo自动向官方服务器发送公司
+http://blog.sina.com.cn/s/blog_955289220102yln3.html

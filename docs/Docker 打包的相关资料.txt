@@ -47,6 +47,8 @@ docker容器存放目录磁盘空间满了
 https://blog.csdn.net/niu_hao/article/details/78873076
 Docker镜像导致centos-root根分区容量爆满
 https://blog.csdn.net/zs1041126478/article/details/79202086
+docker批量删除容器、镜像
+https://www.cnblogs.com/yanyouqiang/p/8301856.html
 
 在 docker 容器里使用 nginx-proxy 实现自动反向代理及负载均衡
 https://www.jianshu.com/p/8881b7860b6a
@@ -60,6 +62,8 @@ Docker Hub镜像构建错误：returned a non-zero code: 8
 https://blog.csdn.net/chenyufeng1991/article/details/79842066
 dockerfile: returned a non-zero code: 100
 https://blog.csdn.net/tang05709/article/details/78249621
+Docker每次启动容器，IP及hosts指定
+https://blog.csdn.net/u012834750/article/details/80508464
 
 git 创建tag , 查看tag ， 删除tag
 https://www.cnblogs.com/pansidong/p/7773873.html

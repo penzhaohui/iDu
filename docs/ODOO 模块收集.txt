@@ -20,8 +20,47 @@ https://www.odoo.com/apps/modules/10.0/partner_password_reset/
 https://www.odoo.com/apps/modules/10.0/partner_contact_role/
 https://www.odoo.com/apps/modules/6.1/hr_security_ext/(注：可参考其设计思路)
 
+Redis Session Store
+https://www.odoo.com/apps/modules/10.0/smile_redis_session_store/
+Access Restriction By IP
+https://www.odoo.com/apps/modules/11.0/access_restriction_by_ip/
+Web Sessions Management
+https://www.odoo.com/apps/modules/10.0/tko_web_sessions_management/ 
+Odoo Web Sessions Management Rules
+https://www.odoo.com/apps/modules/8.0/web_sessions_management/
+Limit Login Attempts
+https://www.odoo.com/apps/modules/11.0/limit_login_attempts/
+Format Input Number
+https://www.odoo.com/apps/modules/11.0/format_number/
+dbfilter_from_header
+https://www.odoo.com/apps/modules/11.0/dbfilter_from_header/
+Online Exam / Test / Quiz
+https://www.odoo.com/apps/modules/10.0/exam_test_quiz/
+All-IP Two Factor SMS or Call Authentication (2FA)
+https://www.odoo.com/apps/modules/10.0/allip_digits_2f_authentication/
+Module Auto Update
+https://www.odoo.com/apps/modules/11.0/module_auto_update/
+Time Picker Field
+https://www.odoo.com/apps/modules/11.0/field_timepicker/
+Web DB Restrict
+https://www.odoo.com/apps/modules/11.0/web_dbrestrict/
+Audio field
+https://www.odoo.com/apps/modules/11.0/audio_field/
+Visible Search Menu
+https://www.odoo.com/apps/modules/11.0/visible_search_menu/
+popup_beauty
+https://www.odoo.com/apps/modules/10.0/popup_beauty/
+Delete Dialog Box
+https://www.odoo.com/apps/modules/11.0/odoo_deletedialog/
+Web Auto Refresh
+https://www.odoo.com/apps/modules/11.0/smile_web_auto_refresh/
+Cron Failure Notification
+https://www.odoo.com/apps/modules/10.0/cron_failure_notification/
 LDAP相关的模块
 https://www.odoo.com/apps/modules/8.0/auth_cas/
+Kanban Drag Drop Control
+https://www.odoo.com/apps/modules/10.0/kanban_draggable/
+         
 
 
 日志管理相关的模块
@@ -65,11 +104,54 @@ https://github.com/muk-it
 定制表单相关的模块
 https://github.com/OCA/survey
 
+https://github.com/wkhtmltopdf/wkhtmltopdf/releases
+https://github.com/kasim1011/odoo-11.0-windows-installation
+
 ODOO 与微信集成相关的模块
 https://github.com/a741424975game/wechat_mall
 https://github.com/jachinlin/odoo_werobot
 https://github.com/chanvi/odoo_wechat_corp
 
+利用Docker自建多功能加密邮件服务器
+https://www.itmanbu.com/docker-mail-server.html
+tomav/docker-mailserver
+https://github.com/tomav/docker-mailserver
+
+https://www.odoo.com/apps/modules/10.0/hrms_dashboard/
+https://www.odoo.com/apps/modules/9.0/web_dashboard_tile/
+https://www.odoo.com/apps/modules/8.0/invoice_dashboard/
+https://www.odoo.com/apps/modules/10.0/app_odoo_customize/
+https://github.com/slmoebius/builder
+
+https://www.odoo.com/apps/modules/10.0/hr_multi_company/
+https://www.odoo.com/apps/modules/10.0/developer_mode/
+https://www.odoo.com/apps/modules/10.0/employee_dynamic_fields/
+https://www.odoo.com/apps/modules/10.0/odoo-debrand/
+https://www.odoo.com/apps/modules/10.0/user_creation_from_employee/
+https://www.odoo.com/apps/modules/11.0/pivot_heat_map/
+https://www.odoo.com/apps/modules/10.0/one2many_mass_select_delete/
+https://www.odoo.com/apps/modules/10.0/company_hierarchy/
+https://www.odoo.com/apps/modules/10.0/cron_failure_notification/
+https://www.odoo.com/apps/modules/10.0/web_readonly_bypass/
+https://www.odoo.com/apps/modules/10.0/web_one2many_selectable_10/
+https://www.odoo.com/apps/modules/10.0/one2many_mass_select_delete/
+https://www.odoo.com/apps/modules/10.0/website_form_builder/
+https://www.odoo.com/apps/modules/10.0/website_form_recaptcha/
+https://www.odoo.com/apps/modules/10.0/hidden_admin/
+https://www.odoo.com/apps/modules/10.0/mail_restrict_follower_selection/
+
+https://www.odoo.com/apps/modules/12.0/web_global_search/
+https://www.odoo.com/apps/modules/10.0/global_search/
+https://www.odoo.com/apps/modules/9.0/odoo_global_search/
+https://www.odoo.com/apps/modules/12.0/sync_global_search/
+https://www.odoo.com/apps/modules/11.0/global_search_drc/
+
+Automatic Workflow Settings
+https://www.odoo.com/apps/modules/10.0/auto_invoice_workflow_ept/
+Dynamic Workflow Builder
+https://www.odoo.com/apps/modules/11.0/odoo_dynamic_workflow/
+Project Workflow
+https://www.odoo.com/apps/modules/11.0/project_workflow_management/
 
 
 
