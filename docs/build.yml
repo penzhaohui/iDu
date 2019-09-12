@@ -1,0 +1,174 @@
+# prefix used in determining full image name in "docker-images" and "compile-docker"
+docker-prefix: wkhtmltopdf/packaging:0.12_
+
+# command to run for enabling foreign-arch support in currently running kernel (>= 4.8)
+qemu-cmd:      docker run --rm --privileged fkrull/qemu-user-static enable
+
+# all targets supported by the docker-related commands, keys are as follows:
+#
+#   source:         Dockerfile used to build image
+#   output:         one of deb, rpm, tar or 7z
+#   args:           build-time docker args (optional)
+#   arch:           used as arch specified to fpm (for deb or rpm output)
+#   depend:         dependent packages specified to fpm (for deb or rpm output)
+#   qt_config:      override the qt configuration used for building Qt (optional)
+#   cross_compile:  use given prefix for cross-compilation (optional)
+#   qemu:           set to true if qemu emulation is required (optional)
+#
+docker-targets:
+  arm64v8:
+    source: docker/Dockerfile.debian
+    args:
+      from: arm64v8/debian:stretch
+    output: deb
+    qemu:   true
+    arch:   aarch64
+    depend: >
+      ca-certificates
+      fontconfig
+      libc6
+      libfreetype6
+      libjpeg62-turbo
+      libpng16-16
+      libssl1.1
+      libstdc++6
+      libx11-6
+      libxcb1
+      libxext6
+      libxrender1
+      xfonts-75dpi
+      xfonts-base
+      zlib1g
+
+# Qt configure arguments
+qt-config:
+  common: >
+    -opensource
+    -confirm-license
+    -fast
+    -release
+    -static
+    -graphicssystem raster
+    -webkit
+    -exceptions
+    -xmlpatterns
+    -system-zlib
+    -system-libpng
+    -system-libjpeg
+    -no-libmng
+    -no-libtiff
+    -no-accessibility
+    -no-stl
+    -no-qt3support
+    -no-phonon
+    -no-phonon-backend
+    -no-opengl
+    -no-declarative
+    -no-script
+    -no-scripttools
+    -no-sql-ibase
+    -no-sql-mysql
+    -no-sql-odbc
+    -no-sql-psql
+    -no-sql-sqlite
+    -no-sql-sqlite2
+    -no-mmx
+    -no-3dnow
+    -no-sse
+    -no-sse2
+    -no-multimedia
+    -nomake demos
+    -nomake docs
+    -nomake examples
+    -nomake tools
+    -nomake tests
+    -nomake translations
+  debug:
+    -debug
+    -webkit-debug
+  docker: >
+    -silent
+    -xrender
+    -largefile
+    -iconv
+    -openssl-linked
+    -no-javascript-jit
+    -no-rpath
+    -no-dbus
+    -no-nis
+    -no-cups
+    -no-pch
+    -no-gtkstyle
+    -no-nas-sound
+    -no-sm
+    -no-xshape
+    -no-xinerama
+    -no-xcursor
+    -no-xfixes
+    -no-xrandr
+    -no-mitshm
+    -no-xinput
+    -no-xkb
+    -no-glib
+    -no-gstreamer
+    -no-icu
+    -no-openvg
+    -no-xsync
+    -no-audio-backend
+    -no-sse3
+    -no-ssse3
+    -no-sse4.1
+    -no-sse4.2
+    -no-avx
+    -no-neon
+  mingw-w64: >
+    -silent
+    -openssl-linked
+    -no-reduce-exports
+    -no-rpath
+    -no-pch
+    -xplatform win32-g++-4.6
+  macos-carbon: >
+    -silent
+    -reduce-exports
+    -no-framework
+    -no-dwarf2
+    -openssl-linked
+    -largefile
+    -no-rpath
+    -carbon
+    -platform unsupported/macx-clang
+  macos-cocoa: >
+    -silent
+    -reduce-exports
+    -no-framework
+    -no-dwarf2
+    -openssl-linked
+    -largefile
+    -no-rpath
+    -cocoa
+    -platform unsupported/macx-clang-libc++
+  msvc: >
+    -mp
+    -qt-style-windows
+    -no-style-cleanlooks
+    -no-style-windowsxp
+    -no-style-windowsvista
+    -no-style-plastique
+    -no-style-motif
+    -no-style-cde
+    -openssl-linked
+
+# docker image which provides fpm
+fpm-image:      wkhtmltopdf/fpm:20190502
+
+# parameters for building linux packages via fpm (deb/rpm)
+fpm-params:
+  name:         wkhtmltox
+  description:  convert HTML to PDF and various image formats using QtWebkit
+  license:      LGPLv3
+  vendor:       wkhtmltopdf
+  maintainer:   Ashish Kulkarni <ashish@kulkarni.dev>
+  url:          https://wkhtmltopdf.org/
+  prefix:       /usr/local
+  category:     utils
